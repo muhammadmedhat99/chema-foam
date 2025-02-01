@@ -13,7 +13,7 @@ import { IoIosArrowBack, IoIosArrowForward, IoIosPlay } from "react-icons/io";
 import { IoPauseOutline } from "react-icons/io5";
 import { useRef, useState } from "react";
 export const Slider = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   const swiperRef = useRef<any>(null);
 

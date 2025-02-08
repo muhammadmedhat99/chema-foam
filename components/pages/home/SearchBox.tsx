@@ -11,7 +11,7 @@ export const SearchBoxComponent = (props: SearchBoxProps) => {
       <div className="relative w-full">
         <input
           type="text"
-          className="shadow-main w-full bg-paragraph px-4 py-5 text-base outline-none placeholder:text-[#868686]"
+          className="w-full bg-paragraph px-4 py-5 text-base shadow-main outline-none placeholder:text-svg"
           placeholder="Find Products, Application, Systems and Solutions....."
         />
         <BiSearch className="absolute end-4 top-1/2 size-4 -translate-y-1/2 text-[#5A5A5A]" />

@@ -13,7 +13,7 @@ const slider_elements = [
   {
     id: 1,
     element: (
-      <div className="flex w-full items-center justify-center">
+      <div className="flex w-full flex-col items-center justify-center lg:flex-row">
         <Image
           src="/imgs/systems/1.png"
           alt="System image"
@@ -21,7 +21,7 @@ const slider_elements = [
           height={500}
         />
 
-        <div className="flex w-full flex-col gap-4 bg-primary px-14 py-14">
+        <div className="flex w-full flex-col gap-4 bg-primary p-5 lg:p-14">
           <p className="text-3xl font-bold leading-tight text-secondary">
             Chema Foam is simply dummy text of the printing and typesetting
             industry.
@@ -35,7 +35,7 @@ const slider_elements = [
             text="Who We Are"
             isLink={true}
             href="/about"
-            className="h-16 w-[220px] text-sm"
+            className="h-16 w-[235px] text-sm"
           >
             <FaArrowRightLong />
           </Button>
@@ -46,7 +46,7 @@ const slider_elements = [
   {
     id: 2,
     element: (
-      <div className="flex w-full items-center justify-center">
+      <div className="flex w-full flex-col items-center justify-center lg:flex-row">
         <Image
           src="/imgs/systems/1.png"
           alt="System image"
@@ -54,7 +54,7 @@ const slider_elements = [
           height={500}
         />
 
-        <div className="flex w-full flex-col gap-4 bg-primary px-14 py-14">
+        <div className="flex w-full flex-col gap-4 bg-primary p-5 lg:p-14">
           <p className="text-3xl font-bold leading-tight text-secondary">
             Chema Foam is simply dummy text of the printing and typesetting
             industry.
@@ -68,7 +68,7 @@ const slider_elements = [
             text="Who We Are"
             isLink={true}
             href="/about"
-            className="h-16 w-[220px] text-sm"
+            className="h-16 w-[235px] text-sm"
           >
             <FaArrowRightLong />
           </Button>

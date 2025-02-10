@@ -11,7 +11,12 @@ export const SectionWrapper = ({
   className,
 }: SectionWrapperProps) => {
   return (
-    <div className={clsx("container mx-auto px-9 py-20", className)}>
+    <div
+      className={clsx(
+        "container mx-auto px-1 py-2 lg:px-9 lg:py-20",
+        className,
+      )}
+    >
       {children}
     </div>
   );

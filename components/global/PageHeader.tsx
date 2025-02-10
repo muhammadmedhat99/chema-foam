@@ -18,10 +18,10 @@ export const PageHeader = ({
 }: PageHeaderProps) => {
   return (
     <>
-      <div className="flex w-full items-center justify-center">
+      <div className="flex w-full items-center justify-between lg:justify-center">
         <h2
           className={clsx(
-            "relative pb-5 text-5xl font-bold text-primary before:absolute before:bottom-0 before:h-1 before:w-full before:bg-secondary",
+            "relative pb-5 text-2xl font-bold text-primary before:absolute before:bottom-0 before:h-1 before:w-full before:bg-secondary lg:text-5xl",
             link && "ml-auto",
           )}
         >
@@ -31,10 +31,10 @@ export const PageHeader = ({
         {link && href && (
           <Link
             href={href}
-            className="ml-auto flex items-center gap-2 text-xl font-semibold uppercase text-svg"
+            className="ml-auto flex items-center text-xs font-semibold uppercase text-svg lg:gap-2 lg:text-xl"
           >
             <span>{link}</span>
-            <RiArrowDropRightFill size={35} />
+            <RiArrowDropRightFill size={30} />
           </Link>
         )}
       </div>

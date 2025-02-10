@@ -134,7 +134,7 @@ export const Clients = (props: ClientsProps) => {
           description="lorem Ipsum is simply dummy text of the printing and typesetting industry. by injected humour, or randomised words which don't look even slightly believable. by injected humour."
         />
 
-        <div className="flex items-center justify-center gap-8 py-11">
+        <div className="flex flex-wrap items-center justify-center gap-8 py-11">
           <div className="group flex max-w-[144px] flex-col items-center justify-center gap-4 duration-300 hover:max-w-[320px]">
             <BuildingIcon className="size-16 fill-[#1EBAE5] duration-300 group-hover:size-[84px]" />
             <span className="text-[40px] font-medium text-primary duration-300 group-hover:text-[54px]">
@@ -192,7 +192,7 @@ export const Clients = (props: ClientsProps) => {
           slidesPreview={7}
           wrapperClassName="px-0 pg-white items-center"
           showArrows={false}
-          breakpoints={{
+          breakPoints={{
             320: {
               slidesPerView: 2,
               spaceBetween: 10,

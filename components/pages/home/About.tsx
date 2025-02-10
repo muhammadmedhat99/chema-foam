@@ -7,19 +7,18 @@ type AboutProps = {};
 
 export const About = (props: AboutProps) => {
   return (
-    <div className="bg-[#1EBAE51A] py-20">
+    <div className="bg-[#1EBAE51A] px-2 py-20">
       <div className="mx-auto max-w-7xl">
         <PageHeader title="About Chema Foam" />
 
         <div className="mt-10 grid grid-cols-1 gap-9 md:grid-cols-2">
           <iframe
-            width="582px"
-            height="331"
             src="https://www.youtube.com/embed/qGBCn9j5TZk?si=3LEH5PZMqgdSU-LS"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
+            className="h-[331px] w-full"
           ></iframe>
 
           <div className="flex h-full flex-col gap-3.5">

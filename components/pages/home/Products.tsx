@@ -37,7 +37,11 @@ export const Products = (props: ProductsProps) => {
         <PageHeader title="Products" link="All Products" href="/products" />
         <MainSlider
           sliderElements={slider_elements}
-          breakpoints={{
+          breakPoints={{
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
             640: {
               slidesPerView: 2,
               spaceBetween: 20,

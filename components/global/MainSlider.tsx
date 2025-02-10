@@ -17,7 +17,7 @@ type MainSliderProps = {
   spaceBetweenSlides?: number;
   centeredSlides?: boolean;
   loop?: boolean;
-  breakpoints?: {
+  breakPoints?: {
     [key: number]: {
       slidesPerView?: number;
       spaceBetween?: number;
@@ -36,8 +36,8 @@ export const MainSlider = ({
   spaceBetweenSlides = 36,
   centeredSlides = false,
   loop = false,
-  breakpoints,
-  mainClassName = "pt-40",
+  breakPoints,
+  mainClassName = "pt-2 lg:pt-40",
   wrapperClassName = "px-16",
   slideClassName = "flex max-w-[310px] items-center justify-center",
   showArrows = true,
@@ -76,7 +76,7 @@ export const MainSlider = ({
           el: ".main-pagination",
           type: "bullets",
         }}
-        breakpoints={breakpoints}
+        breakpoints={breakPoints}
         autoplay={autoPlay}
       >
         {sliderElements?.map((item) => (

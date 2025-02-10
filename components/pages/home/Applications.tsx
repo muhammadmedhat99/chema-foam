@@ -39,7 +39,11 @@ export const Applications = (props: ApplicationsProps) => {
       />
       <MainSlider
         sliderElements={slider_elements}
-        breakpoints={{
+        breakPoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
           640: {
             slidesPerView: 2,
             spaceBetween: 20,

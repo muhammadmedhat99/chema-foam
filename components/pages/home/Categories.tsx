@@ -7,8 +7,8 @@ type CategoriesProps = {
 };
 
 export const Categories = ({
-  className = "relative z-10 mx-auto -mt-10 flex max-w-7xl flex-wrap items-center justify-center gap-6",
-  buttonClassName = "flex items-center justify-center gap-1 bg-white px-9 py-6 shadow-main",
+  className = "relative z-10 mx-auto mt-5 lg:-mt-10 flex max-w-7xl flex-wrap items-center justify-center gap-3 lg:gap-6",
+  buttonClassName = "flex items-center justify-center gap-1 bg-white px-4 py-3 lg:px-9 lg:py-6 shadow-main",
 }: CategoriesProps) => {
   return (
     <div className={className}>
@@ -18,8 +18,11 @@ export const Categories = ({
           alt="category icon"
           width={28}
           height={28}
+          className="size-5 lg:size-7"
         />
-        <span className="text-base font-bold leading-8 text-svg">Awards</span>
+        <span className="text-sm font-bold leading-8 text-svg lg:text-base">
+          Awards
+        </span>
       </button>
       <button type="button" className={buttonClassName}>
         <Image
@@ -27,8 +30,11 @@ export const Categories = ({
           alt="category icon"
           width={28}
           height={28}
+          className="size-5 lg:size-7"
         />
-        <span className="text-base font-bold leading-8 text-svg">Apps</span>
+        <span className="text-sm font-bold leading-8 text-svg lg:text-base">
+          Apps
+        </span>
       </button>
       <button type="button" className={buttonClassName}>
         <Image
@@ -36,8 +42,11 @@ export const Categories = ({
           alt="category icon"
           width={28}
           height={28}
+          className="size-5 lg:size-7"
         />
-        <span className="text-base font-bold leading-8 text-svg">products</span>
+        <span className="text-sm font-bold leading-8 text-svg lg:text-base">
+          products
+        </span>
       </button>
       <button type="button" className={buttonClassName}>
         <Image
@@ -45,8 +54,11 @@ export const Categories = ({
           alt="category icon"
           width={28}
           height={28}
+          className="size-5 lg:size-7"
         />
-        <span className="text-base font-bold leading-8 text-svg">videos</span>
+        <span className="text-sm font-bold leading-8 text-svg lg:text-base">
+          videos
+        </span>
       </button>
       <button type="button" className={buttonClassName}>
         <Image
@@ -54,8 +66,9 @@ export const Categories = ({
           alt="category icon"
           width={28}
           height={28}
+          className="size-5 lg:size-7"
         />
-        <span className="text-base font-bold leading-8 text-svg">
+        <span className="text-sm font-bold leading-8 text-svg lg:text-base">
           downloads
         </span>
       </button>
@@ -65,8 +78,9 @@ export const Categories = ({
           alt="category icon"
           width={28}
           height={28}
+          className="size-5 lg:size-7"
         />
-        <span className="text-base font-bold leading-8 text-svg">
+        <span className="text-sm font-bold leading-8 text-svg lg:text-base">
           Contact Us
         </span>
       </button>

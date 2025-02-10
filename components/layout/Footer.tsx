@@ -7,9 +7,9 @@ import { FiPhoneCall } from "react-icons/fi";
 
 export const Footer = () => {
   return (
-    <div className="bg-primary py-14">
+    <div className="bg-primary px-2 py-14">
       <div className="mx-auto max-w-7xl">
-        <div className="flex items-center justify-between gap-5">
+        <div className="flex flex-col items-center justify-between gap-5 lg:flex-row">
           <Image src="/imgs/logo.svg" alt="logo" width={200} height={68} />
           <Categories
             className="flex max-w-7xl flex-wrap items-center justify-center gap-4"
@@ -17,7 +17,7 @@ export const Footer = () => {
           />
         </div>
 
-        <div className="grid grid-cols-4 gap-20 pt-20">
+        <div className="grid grid-cols-1 gap-20 pt-20 md:grid-cols-2 lg:grid-cols-4">
           {/* Need Help Section */}
           <div>
             <h3 className="mb-4 font-bold text-secondary">Need Help?</h3>
@@ -103,7 +103,7 @@ export const Footer = () => {
               </p>
             </div>
             <div className="mt-4">
-              <p className="to-white font-bold">OFFICE</p>
+              <p className="font-bold text-white">OFFICE</p>
               <p className="text-sm text-paragraph">
                 11 Obour Buildings - Salah Salem - Nasr City - Cairo
               </p>

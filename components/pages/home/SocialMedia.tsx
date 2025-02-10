@@ -24,11 +24,11 @@ export const SocialMedia = (props: Props) => {
       <div className="relative">
         <h3 className="text-center text-5xl text-white">#BuildYourDream</h3>
         <div className="mx-auto max-w-7xl pt-10">
-          <div className="relative grid grid-cols-2 place-content-center place-items-center gap-3 gap-y-10">
+          <div className="relative grid grid-cols-1 place-content-center place-items-center gap-3 gap-y-10 lg:grid-cols-2">
             {data?.map((item) => (
               <div
                 key={item?.id}
-                className={`group flex h-[590px] w-[375px] flex-col gap-5 overflow-hidden bg-white duration-300 ${activeChild === item?.id ? "absolute left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 scale-150 opacity-100 shadow" : "relative z-0 opacity-50"}`}
+                className={`group flex h-[590px] w-[375px] flex-col gap-5 overflow-hidden bg-white duration-300 ${activeChild === item?.id ? "lg:absolute lg:left-1/2 lg:top-1/2 lg:z-50 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:scale-150 lg:opacity-100 lg:shadow" : "lg:relative lg:z-0 lg:opacity-50"}`}
                 onClick={() => setActiveChild(item?.id)}
               >
                 <Image
@@ -38,7 +38,7 @@ export const SocialMedia = (props: Props) => {
                   height={1024}
                   className="z-10 size-[380px] object-cover"
                 />
-                <div className="px-6 duration-[12000ms] group-hover:-translate-y-72">
+                <div className="duration-10000 px-6 group-hover:-translate-y-80">
                   <div className="flex items-center gap-2 py-8">
                     <Image
                       src="/imgs/logo-2.svg"
@@ -68,7 +68,7 @@ export const SocialMedia = (props: Props) => {
                     بأشكال وأحجام ومواد مختلفة لتناسب احتياجات المشاريع
                   </p>
                   {activeChild !== item.id && (
-                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent transition-all duration-500 ease-in-out"></div>
+                    <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-white to-transparent transition-all duration-500 ease-in-out"></div>
                   )}
                 </div>
               </div>

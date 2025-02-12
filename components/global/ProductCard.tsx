@@ -77,3 +77,25 @@ export const ProductCard = (props: ProductCardProps) => {
     </div>
   );
 };
+
+export const ProductEmptyCard = (props: ProductCardProps) => {
+  return (
+    <div className="relative flex w-full flex-col gap-1.5 border border-secondary">
+      <Image
+        src="/imgs/products/1.png"
+        width={1024}
+        height={1024}
+        alt="application image"
+        className="h-[244px] w-[273px] object-contain p-7 duration-300"
+      />
+
+      <h6 className="text-center text-2xl font-bold text-primary">
+        Chema Proof 105
+      </h6>
+
+      <div className="absolute bottom-0 right-0 flex h-[43px] w-[74px] items-center justify-center bg-secondary font-bold text-primary">
+        25 kg
+      </div>
+    </div>
+  );
+};

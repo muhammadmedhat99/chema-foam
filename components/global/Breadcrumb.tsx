@@ -23,7 +23,7 @@ export const BreadcrumbComponent = ({ pageTitle, pages }: BreadcrumbProps) => {
       <div className="absolute left-0 top-0 z-0 h-full w-full bg-gradient-to-t from-[#000D2B] to-[#F5F5F7CC]" />
       <div className="relative mx-auto flex h-full w-full max-w-7xl items-center justify-between px-2">
         <div className="flex flex-col gap-3">
-          <h3 className="text-5xl text-white">{pageTitle}</h3>
+          <h3 className="text-2xl text-white lg:text-5xl">{pageTitle}</h3>
           <Breadcrumb>
             <BreadcrumbList>
               {pages.map((item, index) => (

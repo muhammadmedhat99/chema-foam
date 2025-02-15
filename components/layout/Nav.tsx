@@ -11,8 +11,6 @@ import {
   MenubarContent,
   MenubarItem,
   MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
   MenubarSub,
   MenubarSubContent,
   MenubarSubTrigger,
@@ -23,29 +21,110 @@ const navItems: NavItem[] = [
   { label: "About Us", href: "/about" },
   {
     label: "Applications",
-    href: "/apps",
+    href: "/applications",
     sublinks: [
-      { label: "Web Development", href: "/apps/web" },
-      { label: "Mobile Development", href: "/apps/mobile" },
-      { label: "SEO", href: "/apps/seo" },
+      {
+        label: "Thermal Insulation",
+        href: "/applications?app=thermal-insulation",
+      },
+      { label: "Waterproofing", href: "/applications?app=waterproofing" },
+      { label: "Tile Adhesive", href: "/applications?app=tile-adhesive" },
+      {
+        label: "Insulation & construction",
+        href: "#",
+        sublinks: [
+          {
+            label: "Light-Weight Concrete",
+            href: "/applications?app=light-weight-concrete",
+          },
+          {
+            label: "Chema Protection System",
+            href: "/applications?app=chema-protection-system",
+          },
+          { label: "Geo Foam", href: "/applications?app=geo-foam" },
+          { label: "Floor Raising", href: "/applications?app=floor-raising" },
+        ],
+      },
+      {
+        label: "Outdoor Decoration",
+        href: "/applications?app=outdoor-decoration",
+      },
+      {
+        label: "3D Models",
+        href: "/applications?app=3d-models",
+      },
     ],
   },
   {
     label: "Products",
     href: "/products",
     sublinks: [
-      { label: "Web Development", href: "/products/web" },
-      { label: "Mobile Development", href: "/products/mobile" },
-      { label: "SEO", href: "/products/seo" },
+      {
+        label: "Thermal Insulation",
+        href: "/products?product=thermal-insulation",
+      },
+      { label: "Waterproofing", href: "/products?product=waterproofing" },
+      { label: "Tile Adhesive", href: "/products?product=tile-adhesive" },
+      {
+        label: "Insulation & construction",
+        href: "#",
+        sublinks: [
+          {
+            label: "Light-Weight Concrete",
+            href: "/products?product=light-weight-concrete",
+          },
+          {
+            label: "Chema Protection System",
+            href: "/products?product=chema-protection-system",
+          },
+          { label: "Geo Foam", href: "/products?product=geo-foam" },
+          { label: "Floor Raising", href: "/products?product=floor-raising" },
+        ],
+      },
+      {
+        label: "Outdoor Decoration",
+        href: "/products?product=outdoor-decoration",
+      },
+      {
+        label: "3D Models",
+        href: "/products?product=3d-models",
+      },
     ],
   },
   {
     label: "Systems",
     href: "/systems",
     sublinks: [
-      { label: "Web Development", href: "/systems/web" },
-      { label: "Mobile Development", href: "/systems/mobile" },
-      { label: "SEO", href: "/systems/seo" },
+      {
+        label: "Thermal Insulation",
+        href: "/systems?system=thermal-insulation",
+      },
+      { label: "Waterproofing", href: "/systems?system=waterproofing" },
+      { label: "Tile Adhesive", href: "/systems?system=tile-adhesive" },
+      {
+        label: "Insulation & construction",
+        href: "#",
+        sublinks: [
+          {
+            label: "Light-Weight Concrete",
+            href: "/systems?system=light-weight-concrete",
+          },
+          {
+            label: "Chema Protection System",
+            href: "/systems?system=chema-protection-system",
+          },
+          { label: "Geo Foam", href: "/systems?system=geo-foam" },
+          { label: "Floor Raising", href: "/systems?system=floor-raising" },
+        ],
+      },
+      {
+        label: "Outdoor Decoration",
+        href: "/systems?system=outdoor-decoration",
+      },
+      {
+        label: "3D Models",
+        href: "/systems?system=3d-models",
+      },
     ],
   },
   { label: "Videos", href: "/videos" },
@@ -127,25 +206,26 @@ export const Navbar: React.FC = () => {
                   />
                 </MenubarTrigger>
                 <MenubarContent className="z-[999]">
-                  <MenubarItem>
-                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                  </MenubarItem>
-                  <MenubarItem>
-                    New Window <MenubarShortcut>⌘N</MenubarShortcut>
-                  </MenubarItem>
-                  <MenubarItem disabled>New Incognito Window</MenubarItem>
-                  <MenubarSub>
-                    <MenubarSubTrigger>Share</MenubarSubTrigger>
-                    <MenubarSubContent>
-                      <MenubarItem>Email link</MenubarItem>
-                      <MenubarItem>Messages</MenubarItem>
-                      <MenubarItem>Notes</MenubarItem>
-                    </MenubarSubContent>
-                  </MenubarSub>
-                  <MenubarSeparator />
-                  <MenubarItem>
-                    Print... <MenubarShortcut>⌘P</MenubarShortcut>
-                  </MenubarItem>
+                  {item?.sublinks?.map((sublink) =>
+                    sublink?.sublinks ? (
+                      <MenubarSub key={`subSubLink-${sublink.label}`}>
+                        <MenubarSubTrigger>{sublink?.label}</MenubarSubTrigger>
+                        <MenubarSubContent>
+                          {sublink?.sublinks?.map((singleLink) => (
+                            <MenubarItem>
+                              <Link href={singleLink?.href}>
+                                {singleLink?.label}
+                              </Link>
+                            </MenubarItem>
+                          ))}
+                        </MenubarSubContent>
+                      </MenubarSub>
+                    ) : (
+                      <MenubarItem key={`sublink-${sublink?.label}`}>
+                        <Link href={sublink?.href}>{sublink?.label}</Link>
+                      </MenubarItem>
+                    ),
+                  )}
                 </MenubarContent>
               </MenubarMenu>
             </Menubar>

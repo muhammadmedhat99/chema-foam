@@ -8,7 +8,7 @@ import { ApplicationCard } from "@/components/global/ApplicationCard";
 
 export const ProductDetails = () => {
   return (
-    <div className="col-span-3">
+    <div className="lg:col-span-3">
       <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
         <ProductEmptyCard />
 

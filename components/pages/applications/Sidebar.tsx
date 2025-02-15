@@ -6,12 +6,16 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Checkbox } from "@/components/ui/checkbox";
-export const Sidebar = () => {
+
+interface SidebarProps {
+  filterTitle: string;
+}
+export const Sidebar = ({ filterTitle }: SidebarProps) => {
   return (
     <div className="h-fit w-full bg-secondary/10 px-6 py-8">
       <div className="flex items-center justify-start gap-2">
         <FiltersIcon width={16} height={16} className="fill-[#5a5a5a]" />
-        <span className="text-xl font-bold text-[#5a5a5a]">Applications</span>
+        <span className="text-xl font-bold text-[#5a5a5a]">{filterTitle}</span>
       </div>
 
       <Accordion type="multiple" defaultValue={["item-1", "item-2", "item-3"]}>

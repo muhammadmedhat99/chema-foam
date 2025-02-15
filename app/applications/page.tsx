@@ -8,17 +8,24 @@ import { Sidebar } from "@/components/pages/applications/Sidebar";
 
 import { BiMessageSquareDots } from "react-icons/bi";
 
-export default function page() {
+export default function page({
+  searchParams,
+}: {
+  searchParams: { app: string };
+}) {
   return (
     <div>
       <BreadcrumbComponent
-        pageTitle="Applications"
-        pages={[{ title: "Home", href: "/" }, { title: "Applications" }]}
+        pageTitle={searchParams?.app || "Applications"}
+        pages={[
+          { title: "Home", href: "/" },
+          { title: searchParams?.app || "Applications" },
+        ]}
       />
       <div className="mx-auto my-20 max-w-7xl px-2">
         <div className="grid gap-3 lg:grid-cols-4 lg:gap-9">
-          <Sidebar />
-          <div className="col-span-3">
+          <Sidebar filterTitle="Applications" />
+          <div className="lg:col-span-3">
             <Image
               src="/imgs/applications/2.jpg"
               alt="application image"

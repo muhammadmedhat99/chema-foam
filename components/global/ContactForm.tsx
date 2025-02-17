@@ -272,13 +272,13 @@ export const ContactForm = () => {
           <Button
             type="button"
             onClick={handleReset}
-            className="h-[60px] rounded-none bg-paragraph px-10 text-2xl font-bold text-svg hover:bg-paragraph/45"
+            className="h-12 rounded-none bg-paragraph px-6 text-lg font-bold text-svg hover:bg-paragraph/45 lg:h-[60px] lg:px-10 lg:text-2xl"
           >
             Reset
           </Button>
           <Button
             type="submit"
-            className="h-[60px] rounded-none bg-secondary px-10 text-2xl font-bold text-primary hover:bg-secondary/65"
+            className="h-12 rounded-none bg-secondary px-6 text-lg font-bold text-primary hover:bg-secondary/65 lg:h-[60px] lg:px-10 lg:text-2xl"
           >
             Submit Form
           </Button>

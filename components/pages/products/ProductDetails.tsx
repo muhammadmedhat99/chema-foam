@@ -121,7 +121,7 @@ export const ProductDetails = () => {
           content={
             <>
               <p className="text-2xl text-[#1EBAE5]">Other Related Products</p>
-              <div className="mt-5 flex items-center gap-3">
+              <div className="mt-5 flex flex-wrap items-center gap-3">
                 <ProductCard />
                 <ProductCard />
                 <ProductCard />
@@ -129,7 +129,7 @@ export const ProductDetails = () => {
               <p className="mt-10 text-2xl text-[#1EBAE5]">
                 Applications related to this product
               </p>
-              <div className="mt-5 flex items-center gap-3">
+              <div className="mt-5 flex flex-wrap items-center gap-3">
                 <ApplicationCard />
                 <ApplicationCard />
               </div>

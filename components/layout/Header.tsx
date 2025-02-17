@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { Navbar } from "./Nav";
+import { Navbar, ResponsiveNav } from "./Nav";
 import { IoIosArrowDown, IoMdSearch } from "react-icons/io";
 import { FaGlobeAmericas } from "react-icons/fa";
 import { ImageIcon } from "../icons";
@@ -134,63 +134,7 @@ export const Header = () => {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="z-[999] lg:hidden">
-                <div className="flex flex-col gap-2">
-                  {navItems.map((item) =>
-                    !item?.sublinks ? (
-                      <Link
-                        key={item?.label}
-                        href={item.href}
-                        className={`flex items-center gap-1 px-3 py-2 font-normal text-black duration-300 hover:text-secondary`}
-                      >
-                        <span>{item.label}</span>
-                        {item?.sublinks && (
-                          <IoIosArrowDown
-                            className={`transition-transform duration-300`}
-                          />
-                        )}
-                      </Link>
-                    ) : (
-                      <Menubar
-                        key={item?.label}
-                        className="border-none bg-transparent px-0 shadow-none"
-                      >
-                        <MenubarMenu>
-                          <MenubarTrigger
-                            className={`flex w-full items-center justify-between gap-1 !bg-transparent px-3 py-2 text-base font-normal text-black duration-300 hover:!text-secondary data-[state=open]:!text-secondary`}
-                          >
-                            <span>{item.label}</span>
-                            <IoIosArrowDown
-                              className={`transition-transform duration-300`}
-                            />
-                          </MenubarTrigger>
-                          <MenubarContent className="z-[999]">
-                            <MenubarItem>
-                              New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                            </MenubarItem>
-                            <MenubarItem>
-                              New Window <MenubarShortcut>⌘N</MenubarShortcut>
-                            </MenubarItem>
-                            <MenubarItem disabled>
-                              New Incognito Window
-                            </MenubarItem>
-                            <MenubarSub>
-                              <MenubarSubTrigger>Share</MenubarSubTrigger>
-                              <MenubarSubContent>
-                                <MenubarItem>Email link</MenubarItem>
-                                <MenubarItem>Messages</MenubarItem>
-                                <MenubarItem>Notes</MenubarItem>
-                              </MenubarSubContent>
-                            </MenubarSub>
-                            <MenubarSeparator />
-                            <MenubarItem>
-                              Print... <MenubarShortcut>⌘P</MenubarShortcut>
-                            </MenubarItem>
-                          </MenubarContent>
-                        </MenubarMenu>
-                      </Menubar>
-                    ),
-                  )}
-                </div>
+                <ResponsiveNav />
               </SheetContent>
             </Sheet>
           </div>

@@ -13,7 +13,7 @@ export default function page() {
       <div className="mx-auto max-w-7xl py-5 lg:py-20">
         <PageHeader title="Products Applications" />
 
-        <div className="mt-10 grid gap-3 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-9">
+        <div className="mt-10 grid gap-3 px-2 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-9">
           <VideoCard />
           <VideoCard />
           <VideoCard />

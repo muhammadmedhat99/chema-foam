@@ -151,7 +151,7 @@ export default function page({
                       />
                     </div>
 
-                    <div className="mt-5 flex items-center gap-3">
+                    <div className="mt-5 flex flex-wrap items-center gap-3">
                       <ProductCard />
                       <ProductCard />
                       <ProductCard />

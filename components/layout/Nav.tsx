@@ -3,7 +3,7 @@ import { NavItem } from "@/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
 import {
@@ -16,6 +16,12 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/components/ui/menubar";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../ui/accordion";
 const navItems: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
@@ -133,49 +139,13 @@ const navItems: NavItem[] = [
 ];
 
 // Update the Navbar component to use this hook
-export const Navbar: React.FC = () => {
+export const Navbar = () => {
   const [activeSublink, setActiveSublink] = useState<string | null>(null);
 
   const pathname = usePathname();
 
   return (
     <>
-      {/* <NavigationMenu>
-        <NavigationMenuList>
-          {navItems.map((item) =>
-            !item?.sublinks ? (
-              <NavigationMenuItem
-                className="flex items-center gap-1 bg-transparent px-3 py-2 text-white duration-300 hover:text-secondary"
-                key={item.label}
-              >
-                <Link href={item?.href} legacyBehavior passHref>
-                  <NavigationMenuLink className="flex items-center gap-1 px-3 py-2 text-white duration-300 hover:text-secondary">
-                    {item?.label}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            ) : (
-              <NavigationMenuItem key={item.label} className="relative">
-                <NavigationMenuTrigger className="!bg-transparent text-white duration-300 hover:text-secondary">
-                  {item.label}
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid gap-3 p-4 md:w-[300px] lg:w-[300px] lg:grid-cols-1">
-                    {item.sublinks.map((sublink) => (
-                      <ListItem
-                        href={sublink.href}
-                        title={sublink.label}
-                        key={sublink.label}
-                      ></ListItem>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            ),
-          )}
-        </NavigationMenuList>
-      </NavigationMenu> */}
-
       <div className="hidden items-center justify-center space-x-4 lg:flex">
         {navItems.map((item) =>
           !item?.sublinks ? (
@@ -236,28 +206,79 @@ export const Navbar: React.FC = () => {
   );
 };
 
-// const ListItem = React.forwardRef<
-//   React.ElementRef<"a">,
-//   React.ComponentPropsWithoutRef<"a">
-// >(({ className, title, children, ...props }, ref) => {
-//   return (
-//     <li>
-//       <NavigationMenuLink asChild>
-//         <a
-//           ref={ref}
-//           className={cn(
-//             "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors",
-//             className,
-//           )}
-//           {...props}
-//         >
-//           <div className="text-sm font-medium leading-none">{title}</div>
-//           <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-//             {children}
-//           </p>
-//         </a>
-//       </NavigationMenuLink>
-//     </li>
-//   );
-// });
-// ListItem.displayName = "ListItem";
+export const ResponsiveNav = () => {
+  const [activeSublink, setActiveSublink] = useState<string | null>(null);
+
+  const pathname = usePathname();
+  return (
+    <div className="flex flex-col gap-2 lg:hidden">
+      {navItems.map((item) =>
+        !item?.sublinks ? (
+          <Link
+            key={item?.label}
+            href={item.href}
+            className={`flex items-center gap-1 py-2 duration-300 hover:text-secondary ${pathname === item.href ? "text-base font-bold text-secondary" : "text-xs font-normal"}`}
+          >
+            <span>{item.label}</span>
+            {item?.sublinks && (
+              <IoIosArrowDown
+                className={`transition-transform duration-300 ${activeSublink === item?.label ? "-scale-y-100" : ""}`}
+              />
+            )}
+          </Link>
+        ) : (
+          <Accordion key={item?.label} type="single" collapsible>
+            <AccordionItem
+              value={item?.label}
+              className={`border-b-0 !bg-transparent duration-300 hover:!text-secondary data-[state=open]:!text-secondary ${pathname === item.href ? "text-base font-bold text-secondary" : "text-xs font-normal"}`}
+            >
+              <AccordionTrigger className="max-h-4 text-xs font-normal">
+                {item?.label}
+              </AccordionTrigger>
+              <AccordionContent className="px-2">
+                {item?.sublinks?.map((sublink) =>
+                  sublink?.sublinks ? (
+                    <Accordion
+                      type="multiple"
+                      key={`subSubLink-${sublink.label}`}
+                    >
+                      <AccordionItem
+                        value={`nested-item-${sublink?.label}`}
+                        className={`border-b-0 !bg-transparent duration-300 hover:!text-secondary data-[state=open]:!text-secondary ${pathname === sublink.href ? "text-base font-bold text-secondary" : "text-xs font-normal"}`}
+                      >
+                        <AccordionTrigger
+                          className={`text-xs font-normal text-black`}
+                        >
+                          {sublink?.label}
+                        </AccordionTrigger>
+                        <AccordionContent className="px-2">
+                          {sublink?.sublinks?.map((singleLink) => (
+                            <Link
+                              key={`sublink-${sublink?.label}`}
+                              href={singleLink?.href}
+                              className={`text-xs font-normal text-black`}
+                            >
+                              {singleLink?.label}
+                            </Link>
+                          ))}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  ) : (
+                    <Link
+                      key={`sublink-${sublink?.label}`}
+                      href={sublink?.href}
+                      className={`text-xs font-normal text-black`}
+                    >
+                      {sublink?.label}
+                    </Link>
+                  ),
+                )}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        ),
+      )}
+    </div>
+  );
+};

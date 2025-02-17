@@ -29,7 +29,7 @@ export default function page() {
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1" className="border-b-0">
             <AccordionTrigger>
-              <p className="text-3xl font-bold text-primary">
+              <p className="font-bold text-primary lg:text-3xl">
                 <strong>For your Inquiries -</strong> Contact us in your
                 preferred way.?
               </p>
@@ -143,7 +143,7 @@ export default function page() {
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1" className="border-b-0">
             <AccordionTrigger>
-              <p className="text-3xl font-bold text-primary">
+              <p className="font-bold text-primary lg:text-3xl">
                 <strong>Distributors</strong> Contact your nearest distributor.
               </p>
             </AccordionTrigger>
@@ -346,7 +346,7 @@ export default function page() {
           </AccordionItem>
         </Accordion>
 
-        <h6 className="my-5 text-5xl font-semibold text-primary">
+        <h6 className="my-5 text-2xl font-semibold text-primary lg:text-5xl">
           Contact Forms
         </h6>
         <CustomAccordion

@@ -7,8 +7,8 @@ type CategoriesProps = {
 };
 
 export const Categories = ({
-  className = "relative z-10 mx-auto mt-5 lg:-mt-10 flex max-w-7xl flex-wrap items-center justify-center gap-3 lg:gap-6",
-  buttonClassName = "flex items-center justify-center gap-1 bg-white px-4 py-3 lg:px-9 lg:py-6 shadow-main",
+  className = "relative z-10 mx-auto mt-5 lg:-mt-10 flex max-w-7xl flex-wrap items-center justify-center gap-3 lg:gap-6 duration-300",
+  buttonClassName = "flex items-center justify-center gap-1 bg-white px-4 py-3 lg:px-9 lg:py-6 shadow-main duration-300 hover:bg-secondary",
 }: CategoriesProps) => {
   return (
     <div className={className}>

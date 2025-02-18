@@ -11,6 +11,7 @@ import {
 } from "@/components/icons";
 import { MainSlider } from "@/components/global/MainSlider";
 import Image from "next/image";
+import { FadeIn } from "@/components/global/FadeIn";
 
 type ClientsProps = {};
 
@@ -129,60 +130,66 @@ export const Clients = (props: ClientsProps) => {
   return (
     <div className="bg-primary/10 pb-20">
       <SectionWrapper className="max-w-7xl">
-        <PageHeader
-          title="Chema Foam Projects"
-          description="lorem Ipsum is simply dummy text of the printing and typesetting industry. by injected humour, or randomised words which don't look even slightly believable. by injected humour."
-        />
+        <FadeIn duration={0.5} delay={0.2}>
+          <PageHeader
+            title="Chema Foam Projects"
+            description="lorem Ipsum is simply dummy text of the printing and typesetting industry. by injected humour, or randomised words which don't look even slightly believable. by injected humour."
+          />
+        </FadeIn>
 
-        <div className="flex flex-wrap items-center justify-center gap-8 py-11">
-          <div className="group flex max-w-[144px] flex-col items-center justify-center gap-4 duration-300 hover:max-w-[320px]">
-            <BuildingIcon className="size-16 fill-[#1EBAE5] duration-300 group-hover:size-[84px]" />
-            <span className="text-[40px] font-medium text-primary duration-300 group-hover:text-[54px]">
-              750
-            </span>
-            <span className="text-center text-[14px] text-svg duration-300 group-hover:text-[28px]">
-              Total Chema Foam Projects
-            </span>
+        <FadeIn duration={0.5} delay={0.2}>
+          <div className="flex flex-wrap items-center justify-center gap-8 py-11">
+            <div className="group flex max-w-[144px] flex-col items-center justify-center gap-4 duration-300 hover:max-w-[320px]">
+              <BuildingIcon className="size-16 fill-[#1EBAE5] duration-300 group-hover:size-[84px]" />
+              <span className="text-[40px] font-medium text-primary duration-300 group-hover:text-[54px]">
+                750
+              </span>
+              <span className="text-center text-[14px] text-svg duration-300 group-hover:text-[28px]">
+                Total Chema Foam Projects
+              </span>
+            </div>
+            <div className="group flex max-w-[144px] flex-col items-center justify-center gap-4 duration-300 hover:max-w-[320px]">
+              <HouseIcon className="size-16 fill-[#1EBAE5] duration-300 group-hover:size-[84px]" />
+              <span className="text-[40px] font-medium text-primary duration-300 group-hover:text-[54px]">
+                2,000
+              </span>
+              <span className="text-center text-[14px] text-svg duration-300 group-hover:text-[28px]">
+                Total Chema Foam Projects
+              </span>
+            </div>
+            <div className="group flex max-w-[144px] flex-col items-center justify-center gap-4 duration-300 hover:max-w-[320px]">
+              <GearIcon className="size-16 fill-[#1EBAE5] duration-300 group-hover:size-[84px]" />
+              <span className="text-[40px] font-medium text-primary duration-300 group-hover:text-[54px]">
+                5,000
+              </span>
+              <span className="text-center text-[14px] text-svg duration-300 group-hover:text-[28px]">
+                Total Chema Foam Projects
+              </span>
+            </div>
+            <div className="group flex max-w-[144px] flex-col items-center justify-center gap-4 duration-300 hover:max-w-[320px]">
+              <TourIcon className="size-16 fill-[#1EBAE5] duration-300 group-hover:size-[84px]" />
+              <span className="text-[40px] font-medium text-primary duration-300 group-hover:text-[54px]">
+                750
+              </span>
+              <span className="text-center text-[14px] text-svg duration-300 group-hover:text-[28px]">
+                Total Chema Foam Projects
+              </span>
+            </div>
+            <div className="group flex max-w-[144px] flex-col items-center justify-center gap-4 duration-300 hover:max-w-[320px]">
+              <FactorIcon className="size-16 fill-[#1EBAE5] duration-300 group-hover:size-[84px]" />
+              <span className="text-[40px] font-medium text-primary duration-300 group-hover:text-[54px]">
+                750
+              </span>
+              <span className="text-center text-[14px] text-svg duration-300 group-hover:text-[28px]">
+                Total Chema Foam Projects
+              </span>
+            </div>
           </div>
-          <div className="group flex max-w-[144px] flex-col items-center justify-center gap-4 duration-300 hover:max-w-[320px]">
-            <HouseIcon className="size-16 fill-[#1EBAE5] duration-300 group-hover:size-[84px]" />
-            <span className="text-[40px] font-medium text-primary duration-300 group-hover:text-[54px]">
-              2,000
-            </span>
-            <span className="text-center text-[14px] text-svg duration-300 group-hover:text-[28px]">
-              Total Chema Foam Projects
-            </span>
-          </div>
-          <div className="group flex max-w-[144px] flex-col items-center justify-center gap-4 duration-300 hover:max-w-[320px]">
-            <GearIcon className="size-16 fill-[#1EBAE5] duration-300 group-hover:size-[84px]" />
-            <span className="text-[40px] font-medium text-primary duration-300 group-hover:text-[54px]">
-              5,000
-            </span>
-            <span className="text-center text-[14px] text-svg duration-300 group-hover:text-[28px]">
-              Total Chema Foam Projects
-            </span>
-          </div>
-          <div className="group flex max-w-[144px] flex-col items-center justify-center gap-4 duration-300 hover:max-w-[320px]">
-            <TourIcon className="size-16 fill-[#1EBAE5] duration-300 group-hover:size-[84px]" />
-            <span className="text-[40px] font-medium text-primary duration-300 group-hover:text-[54px]">
-              750
-            </span>
-            <span className="text-center text-[14px] text-svg duration-300 group-hover:text-[28px]">
-              Total Chema Foam Projects
-            </span>
-          </div>
-          <div className="group flex max-w-[144px] flex-col items-center justify-center gap-4 duration-300 hover:max-w-[320px]">
-            <FactorIcon className="size-16 fill-[#1EBAE5] duration-300 group-hover:size-[84px]" />
-            <span className="text-[40px] font-medium text-primary duration-300 group-hover:text-[54px]">
-              750
-            </span>
-            <span className="text-center text-[14px] text-svg duration-300 group-hover:text-[28px]">
-              Total Chema Foam Projects
-            </span>
-          </div>
-        </div>
+        </FadeIn>
 
-        <PageHeader title="Our Clients" />
+        <FadeIn>
+          <PageHeader title="Our Clients" />
+        </FadeIn>
       </SectionWrapper>
       <div className="mx-auto bg-white">
         <MainSlider

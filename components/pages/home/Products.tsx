@@ -4,6 +4,7 @@ import { MainSlider } from "@/components/global/MainSlider";
 import { PageHeader } from "@/components/global/PageHeader";
 import { ProductCard } from "@/components/global/ProductCard";
 import { SectionWrapper } from "@/components/global/SectionWrapper";
+import { FadeIn } from "@/components/global/FadeIn";
 
 type ProductsProps = {};
 
@@ -34,7 +35,9 @@ export const Products = (props: ProductsProps) => {
   return (
     <div className="bg-secondary/20">
       <SectionWrapper>
-        <PageHeader title="Products" link="All Products" href="/products" />
+        <FadeIn duration={0.5}>
+          <PageHeader title="Products" link="All Products" href="/products" />
+        </FadeIn>
         <MainSlider
           sliderElements={slider_elements}
           breakPoints={{

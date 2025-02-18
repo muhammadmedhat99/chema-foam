@@ -3,6 +3,7 @@ import { MainSlider } from "@/components/global/MainSlider";
 import { PageHeader } from "@/components/global/PageHeader";
 import { SectionWrapper } from "@/components/global/SectionWrapper";
 import { ApplicationCard } from "@/components/global/ApplicationCard";
+import { FadeIn } from "@/components/global/FadeIn";
 
 type ApplicationsProps = {};
 
@@ -32,11 +33,13 @@ const slider_elements = [
 export const Applications = (props: ApplicationsProps) => {
   return (
     <SectionWrapper>
-      <PageHeader
-        title="Applications"
-        link="All Applications"
-        href="/applications"
-      />
+      <FadeIn duration={0.5}>
+        <PageHeader
+          title="Applications"
+          link="All Applications"
+          href="/applications"
+        />
+      </FadeIn>
       <MainSlider
         sliderElements={slider_elements}
         breakPoints={{

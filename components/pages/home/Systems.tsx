@@ -6,6 +6,7 @@ import { MainSlider } from "@/components/global/MainSlider";
 import Image from "next/image";
 import { Button } from "@/components/global/Button";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { FadeIn } from "@/components/global/FadeIn";
 
 type SystemsProps = {};
 
@@ -80,11 +81,13 @@ const slider_elements = [
 export const Systems = (props: SystemsProps) => {
   return (
     <SectionWrapper className="max-w-7xl">
-      <PageHeader
-        title="Smart Solution System"
-        link="All Systems"
-        href="/systems"
-      />
+      <FadeIn delay={0.5}>
+        <PageHeader
+          title="Smart Solution System"
+          link="All Systems"
+          href="/systems"
+        />
+      </FadeIn>
 
       <MainSlider
         sliderElements={slider_elements}

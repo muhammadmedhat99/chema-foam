@@ -3,36 +3,134 @@ import { NavItem } from "@/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { useEffect, useRef, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../ui/accordion";
 const navItems: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   {
     label: "Applications",
-    href: "/apps",
+    href: "/applications",
     sublinks: [
-      { label: "Web Development", href: "/apps/web" },
-      { label: "Mobile Development", href: "/apps/mobile" },
-      { label: "SEO", href: "/apps/seo" },
+      {
+        label: "Thermal Insulation",
+        href: "/applications?app=thermal-insulation",
+      },
+      { label: "Waterproofing", href: "/applications?app=waterproofing" },
+      { label: "Tile Adhesive", href: "/applications?app=tile-adhesive" },
+      {
+        label: "Insulation & construction",
+        href: "#",
+        sublinks: [
+          {
+            label: "Light-Weight Concrete",
+            href: "/applications?app=light-weight-concrete",
+          },
+          {
+            label: "Chema Protection System",
+            href: "/applications?app=chema-protection-system",
+          },
+          { label: "Geo Foam", href: "/applications?app=geo-foam" },
+          { label: "Floor Raising", href: "/applications?app=floor-raising" },
+        ],
+      },
+      {
+        label: "Outdoor Decoration",
+        href: "/applications?app=outdoor-decoration",
+      },
+      {
+        label: "3D Models",
+        href: "/applications?app=3d-models",
+      },
     ],
   },
   {
     label: "Products",
     href: "/products",
     sublinks: [
-      { label: "Web Development", href: "/products/web" },
-      { label: "Mobile Development", href: "/products/mobile" },
-      { label: "SEO", href: "/products/seo" },
+      {
+        label: "Thermal Insulation",
+        href: "/products?product=thermal-insulation",
+      },
+      { label: "Waterproofing", href: "/products?product=waterproofing" },
+      { label: "Tile Adhesive", href: "/products?product=tile-adhesive" },
+      {
+        label: "Insulation & construction",
+        href: "#",
+        sublinks: [
+          {
+            label: "Light-Weight Concrete",
+            href: "/products?product=light-weight-concrete",
+          },
+          {
+            label: "Chema Protection System",
+            href: "/products?product=chema-protection-system",
+          },
+          { label: "Geo Foam", href: "/products?product=geo-foam" },
+          { label: "Floor Raising", href: "/products?product=floor-raising" },
+        ],
+      },
+      {
+        label: "Outdoor Decoration",
+        href: "/products?product=outdoor-decoration",
+      },
+      {
+        label: "3D Models",
+        href: "/products?product=3d-models",
+      },
     ],
   },
   {
     label: "Systems",
     href: "/systems",
     sublinks: [
-      { label: "Web Development", href: "/systems/web" },
-      { label: "Mobile Development", href: "/systems/mobile" },
-      { label: "SEO", href: "/systems/seo" },
+      {
+        label: "Thermal Insulation",
+        href: "/systems?system=thermal-insulation",
+      },
+      { label: "Waterproofing", href: "/systems?system=waterproofing" },
+      { label: "Tile Adhesive", href: "/systems?system=tile-adhesive" },
+      {
+        label: "Insulation & construction",
+        href: "#",
+        sublinks: [
+          {
+            label: "Light-Weight Concrete",
+            href: "/systems?system=light-weight-concrete",
+          },
+          {
+            label: "Chema Protection System",
+            href: "/systems?system=chema-protection-system",
+          },
+          { label: "Geo Foam", href: "/systems?system=geo-foam" },
+          { label: "Floor Raising", href: "/systems?system=floor-raising" },
+        ],
+      },
+      {
+        label: "Outdoor Decoration",
+        href: "/systems?system=outdoor-decoration",
+      },
+      {
+        label: "3D Models",
+        href: "/systems?system=3d-models",
+      },
     ],
   },
   { label: "Videos", href: "/videos" },
@@ -40,49 +138,86 @@ const navItems: NavItem[] = [
   { label: "Contact Us", href: "/contact" },
 ];
 
-const useClickOutside = (callback: () => void) => {
-  const ref = useRef<HTMLLIElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        callback();
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [callback]);
-
-  return ref;
-};
-
 // Update the Navbar component to use this hook
-export const Navbar: React.FC = () => {
+export const Navbar = () => {
   const [activeSublink, setActiveSublink] = useState<string | null>(null);
-  const dropdownRef = useClickOutside(() => setActiveSublink(null));
-
-  const handleSublinkToggle = (label: string) => {
-    setActiveSublink(activeSublink === label ? null : label);
-  };
 
   const pathname = usePathname();
 
   return (
-    <ul className="flex items-center justify-center space-x-4">
-      {navItems.map((item) => (
-        <li key={item.label} className="relative" ref={dropdownRef}>
+    <>
+      <div className="hidden items-center justify-center space-x-4 lg:flex">
+        {navItems.map((item) =>
+          !item?.sublinks ? (
+            <Link
+              key={item?.label}
+              href={item.href}
+              className={`flex items-center gap-1 px-3 py-2 text-white duration-300 hover:text-secondary ${pathname === item.href ? "text-base font-bold text-secondary" : "text-xs font-normal"}`}
+            >
+              <span>{item.label}</span>
+              {item?.sublinks && (
+                <IoIosArrowDown
+                  className={`transition-transform duration-300 ${activeSublink === item?.label ? "-scale-y-100" : ""}`}
+                />
+              )}
+            </Link>
+          ) : (
+            <Menubar
+              key={item?.label}
+              className="border-none bg-transparent shadow-none"
+            >
+              <MenubarMenu>
+                <MenubarTrigger
+                  className={`flex items-center gap-1 !bg-transparent px-3 py-2 text-white duration-300 hover:!text-secondary data-[state=open]:!text-secondary ${pathname === item.href ? "text-base font-bold text-secondary" : "text-xs font-normal"}`}
+                >
+                  {item.label}
+                  <IoIosArrowDown
+                    className={`transition-transform duration-300 ${activeSublink === item?.label ? "-scale-y-100" : ""}`}
+                  />
+                </MenubarTrigger>
+                <MenubarContent className="z-[999]">
+                  {item?.sublinks?.map((sublink) =>
+                    sublink?.sublinks ? (
+                      <MenubarSub key={`subSubLink-${sublink.label}`}>
+                        <MenubarSubTrigger>{sublink?.label}</MenubarSubTrigger>
+                        <MenubarSubContent>
+                          {sublink?.sublinks?.map((singleLink) => (
+                            <MenubarItem>
+                              <Link href={singleLink?.href}>
+                                {singleLink?.label}
+                              </Link>
+                            </MenubarItem>
+                          ))}
+                        </MenubarSubContent>
+                      </MenubarSub>
+                    ) : (
+                      <MenubarItem key={`sublink-${sublink?.label}`}>
+                        <Link href={sublink?.href}>{sublink?.label}</Link>
+                      </MenubarItem>
+                    ),
+                  )}
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          ),
+        )}
+      </div>
+    </>
+  );
+};
+
+export const ResponsiveNav = () => {
+  const [activeSublink, setActiveSublink] = useState<string | null>(null);
+
+  const pathname = usePathname();
+  return (
+    <div className="flex flex-col gap-2 lg:hidden">
+      {navItems.map((item) =>
+        !item?.sublinks ? (
           <Link
+            key={item?.label}
             href={item.href}
-            className={`text-white flex items-center gap-1 px-3 py-2 duration-300 hover:text-secondary ${pathname === item.href ? "text-base font-bold text-secondary" : "text-xs font-normal"}`}
-            onClick={(e) => {
-              if (item.sublinks) {
-                e.preventDefault();
-                handleSublinkToggle(item.label);
-              }
-            }}
+            className={`flex items-center gap-1 py-2 duration-300 hover:text-secondary ${pathname === item.href ? "text-base font-bold text-secondary" : "text-xs font-normal"}`}
           >
             <span>{item.label}</span>
             {item?.sublinks && (
@@ -91,22 +226,59 @@ export const Navbar: React.FC = () => {
               />
             )}
           </Link>
-          {item.sublinks && activeSublink === item.label && (
-            <ul className="bg-gray-700 absolute left-0 top-[150%] mt-2 w-40 rounded-md shadow-lg">
-              {item.sublinks.map((sublink) => (
-                <li key={sublink.label}>
-                  <Link
-                    href={sublink.href}
-                    className="bg-white block px-4 py-2 text-xs text-primary"
-                  >
-                    {sublink.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-      ))}
-    </ul>
+        ) : (
+          <Accordion key={item?.label} type="single" collapsible>
+            <AccordionItem
+              value={item?.label}
+              className={`border-b-0 !bg-transparent duration-300 hover:!text-secondary data-[state=open]:!text-secondary ${pathname === item.href ? "text-base font-bold text-secondary" : "text-xs font-normal"}`}
+            >
+              <AccordionTrigger className="max-h-4 text-xs font-normal">
+                {item?.label}
+              </AccordionTrigger>
+              <AccordionContent className="px-2">
+                {item?.sublinks?.map((sublink) =>
+                  sublink?.sublinks ? (
+                    <Accordion
+                      type="multiple"
+                      key={`subSubLink-${sublink.label}`}
+                    >
+                      <AccordionItem
+                        value={`nested-item-${sublink?.label}`}
+                        className={`border-b-0 !bg-transparent duration-300 hover:!text-secondary data-[state=open]:!text-secondary ${pathname === sublink.href ? "text-base font-bold text-secondary" : "text-xs font-normal"}`}
+                      >
+                        <AccordionTrigger
+                          className={`text-xs font-normal text-black`}
+                        >
+                          {sublink?.label}
+                        </AccordionTrigger>
+                        <AccordionContent className="px-2">
+                          {sublink?.sublinks?.map((singleLink) => (
+                            <Link
+                              key={`sublink-${sublink?.label}`}
+                              href={singleLink?.href}
+                              className={`text-xs font-normal text-black`}
+                            >
+                              {singleLink?.label}
+                            </Link>
+                          ))}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  ) : (
+                    <Link
+                      key={`sublink-${sublink?.label}`}
+                      href={sublink?.href}
+                      className={`text-xs font-normal text-black`}
+                    >
+                      {sublink?.label}
+                    </Link>
+                  ),
+                )}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        ),
+      )}
+    </div>
   );
 };

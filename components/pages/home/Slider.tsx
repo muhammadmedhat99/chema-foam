@@ -13,7 +13,7 @@ import { IoIosArrowBack, IoIosArrowForward, IoIosPlay } from "react-icons/io";
 import { IoPauseOutline } from "react-icons/io5";
 import { useRef, useState } from "react";
 export const Slider = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   const swiperRef = useRef<any>(null);
 
@@ -50,7 +50,7 @@ export const Slider = () => {
         autoplay={isPlaying}
       >
         <SwiperSlide>
-          <div className="relative h-screen w-full px-[120px]">
+          <div className="relative h-screen w-full px-2 lg:px-[120px]">
             <Image
               src="/imgs/slider/1.jpg"
               alt="slider 1"
@@ -80,7 +80,7 @@ export const Slider = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="relative h-screen w-full px-[120px]">
+          <div className="relative h-screen w-full px-2 lg:px-[120px]">
             <Image
               src="/imgs/slider/2.jpg"
               alt="slider 2"
@@ -110,7 +110,7 @@ export const Slider = () => {
             </div>
           </div>
         </SwiperSlide>
-        <div className="custom-navigation">
+        <div className="absolute left-1/2 right-1/2 top-[90%] z-[12] flex items-center justify-center gap-3 lg:left-[120px] lg:right-[unset] lg:top-[72%]">
           <div
             className="cursor-pointer bg-paragraph p-4 text-lg text-svg"
             onClick={handlePrev}
@@ -137,14 +137,14 @@ export const Slider = () => {
             <IoIosArrowForward width={20} />
           </div>
         </div>
-        <div className="custom-pagination"></div>
+        <div className="custom-pagination hidden lg:flex"></div>
       </Swiper>
       <Image
         src="/imgs/logos/icon.svg"
         alt="Chema Logo"
         width={146}
         height={146}
-        className="absolute bottom-20 right-20 z-10"
+        className="absolute bottom-20 right-20 z-10 hidden lg:block"
       />
     </div>
   );

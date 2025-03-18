@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 type ButtonProps = {
@@ -20,8 +20,8 @@ export const Button = ({
       {isLink ? (
         <Link
           href={href}
-          className={clsx(
-            "bg-paragraph flex items-center justify-center gap-2 px-10 py-6 text-xl font-bold text-primary",
+          className={cn(
+            "flex items-center justify-center gap-2 bg-paragraph px-10 py-6 text-xl font-bold text-primary",
             className,
           )}
         >
@@ -30,8 +30,8 @@ export const Button = ({
         </Link>
       ) : (
         <div
-          className={clsx(
-            "bg-paragraph flex items-center justify-center gap-2 px-10 py-6 text-xl font-bold text-primary",
+          className={cn(
+            "flex items-center justify-center gap-2 bg-paragraph px-10 py-6 text-xl font-bold text-primary",
             className,
           )}
         >

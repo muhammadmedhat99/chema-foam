@@ -12,7 +12,6 @@ const fetchData = async (endpoint: string, language: "en" | "ar") => {
         'lang': language,
       },
     });
-    // console.log("Related data:", response.data);
 
     return response.data;
   } catch (error) {

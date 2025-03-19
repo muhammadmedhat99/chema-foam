@@ -3,6 +3,9 @@ import localFont from "next/font/local";
 import "@/styles/globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { routing } from "@/i18n/routing";
+import { notFound } from "next/navigation";
 
 const geistSans = localFont({
   src: "./fonts/Roboto-VariableFont_wdth,wght.ttf",
@@ -15,16 +18,22 @@ export const metadata: Metadata = {
   description: "Created by create be group",
 };
 
-export default function RootLayout({
+export default async function LocaleLayout({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={`${geistSans.variable} antialiased`}>
         <Header />
-        {children}
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
         <Footer />
       </body>
     </html>

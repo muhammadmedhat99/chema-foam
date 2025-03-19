@@ -8,8 +8,15 @@ import { SearchBoxComponent } from "@/components/pages/home/SearchBox";
 import { Slider } from "@/components/pages/home/Slider";
 import { SocialMedia } from "@/components/pages/home/SocialMedia";
 import { Systems } from "@/components/pages/home/Systems";
+import fetchData from "@/utils/api";
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: { locale: "en" | "ar" };
+}) {
+  const { locale } = await params;
+  const data = await fetchData(`page/Home/${locale}`, locale);
   return (
     <div className="">
       <Slider />

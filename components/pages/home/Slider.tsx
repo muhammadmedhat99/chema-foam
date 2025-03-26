@@ -12,7 +12,7 @@ import "swiper/css/scrollbar";
 import { IoIosArrowBack, IoIosArrowForward, IoIosPlay } from "react-icons/io";
 import { IoPauseOutline } from "react-icons/io5";
 import { useRef, useState } from "react";
-export const Slider = () => {
+export const Slider = ({ data }: any) => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const swiperRef = useRef<any>(null);
@@ -49,67 +49,33 @@ export const Slider = () => {
         }}
         autoplay={isPlaying}
       >
-        <SwiperSlide>
-          <div className="relative h-screen w-full px-2 lg:px-[120px]">
-            <Image
-              src="/imgs/slider/1.jpg"
-              alt="slider 1"
-              width={1280}
-              height={1280}
-              className="absolute bottom-0 left-0 right-0 top-0 z-0 h-full w-full object-cover"
-            />
-            <div className="absolute left-0 top-0 z-0 h-full w-full bg-gradient-to-t from-[#000D2B] to-[#F5F5F7CC]" />
-            <div className="relative flex h-full flex-col justify-center gap-6 md:max-w-3xl">
-              <h1 className="text-6xl font-bold text-white">
-                Welcome To Chema Foam
-              </h1>
-              <p className="text-xl text-paragraph">
-                lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. by injected humour, or randomised words which don't
-                look even slightly believable. by injected humour.
-              </p>
-              <Button
-                text="Who We Are"
-                isLink={true}
-                href="/about"
-                className="h-16 w-[262px]"
-              >
-                <FaArrowRightLong />
-              </Button>
+        {data?.map((item: any) => (
+          <SwiperSlide key={item?.id}>
+            <div className="relative h-screen w-full px-2 lg:px-[120px]">
+              <Image
+                src={item?.Background_image}
+                alt="slider 1"
+                width={1280}
+                height={1280}
+                className="absolute bottom-0 left-0 right-0 top-0 z-0 h-full w-full object-cover"
+              />
+              <div className="absolute left-0 top-0 z-0 h-full w-full bg-gradient-to-t from-[#000D2B] to-[#F5F5F7CC]" />
+              <div className="relative flex h-full flex-col justify-center gap-6 md:max-w-3xl">
+                <h1 className="text-6xl font-bold text-white">{item?.title}</h1>
+                <p className="text-xl text-paragraph">{item?.description}</p>
+                <Button
+                  text="Who We Are"
+                  isLink={true}
+                  href="/about"
+                  className="h-16 w-[262px]"
+                >
+                  <FaArrowRightLong />
+                </Button>
+              </div>
             </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="relative h-screen w-full px-2 lg:px-[120px]">
-            <Image
-              src="/imgs/slider/2.jpg"
-              alt="slider 2"
-              width={1280}
-              height={1280}
-              className="absolute bottom-0 left-0 right-0 top-0 z-0 h-full w-full object-cover"
-            />
-            <div className="absolute left-0 top-0 z-0 h-full w-full bg-gradient-to-t from-[#000D2B] to-[#F5F5F7CC]" />
+          </SwiperSlide>
+        ))}
 
-            <div className="relative flex h-full flex-col justify-center gap-6 md:max-w-3xl">
-              <h1 className="text-6xl font-bold text-white">
-                Welcome To Chema Foam
-              </h1>
-              <p className="text-xl text-paragraph">
-                lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. by injected humour, or randomised words which don't
-                look even slightly believable. by injected humour.
-              </p>
-              <Button
-                text="Who We Are"
-                isLink={true}
-                href="/about"
-                className="h-16 w-[262px]"
-              >
-                <FaArrowRightLong />
-              </Button>
-            </div>
-          </div>
-        </SwiperSlide>
         <div className="absolute left-1/2 right-1/2 top-[90%] z-[12] flex items-center justify-center gap-3 lg:left-[120px] lg:right-[unset] lg:top-[72%]">
           <div
             className="cursor-pointer bg-paragraph p-4 text-lg text-svg"

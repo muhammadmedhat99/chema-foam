@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Categories } from "../pages/home/Categories";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { FaFacebookSquare, FaLinkedin, FaYoutubeSquare } from "react-icons/fa";
 import { FiPhoneCall } from "react-icons/fi";
 import { FadeIn } from "../global/FadeIn";

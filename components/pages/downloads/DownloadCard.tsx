@@ -1,6 +1,6 @@
 import { DownloadIcon } from "@/components/icons";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import React from "react";
 
 export const DownloadCard = () => {
@@ -22,8 +22,8 @@ export const DownloadCard = () => {
         href="#"
         className="mx-auto flex w-11/12 items-center justify-center gap-2 bg-paragraph p-3 duration-300 hover:bg-slate-400 md:w-10/12 lg:w-9/12"
       >
-        <span className="text-xl text-[#5A5A5A]">Download</span>
-        <DownloadIcon width={24} height={24} className="fill-[#5A5A5A]" />
+        <span className="text-xl text-secGray">Download</span>
+        <DownloadIcon width={24} height={24} className="fill-secGray" />
       </Link>
     </div>
   );

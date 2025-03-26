@@ -24,6 +24,7 @@ const config: Config = {
 				quaternary: '#ffffff',
 				paragraph: '#D7D7D7',
 				svg: '#868686',
+				secGray: '#5a5a5a',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				card: {

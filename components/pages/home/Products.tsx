@@ -6,32 +6,13 @@ import { ProductCard } from "@/components/global/ProductCard";
 import { SectionWrapper } from "@/components/global/SectionWrapper";
 import { FadeIn } from "@/components/global/FadeIn";
 
-type ProductsProps = {};
+type ProductsProps = { data: any };
 
-const slider_elements = [
-  {
-    id: 1,
-    element: <ProductCard />,
-  },
-  {
-    id: 2,
-    element: <ProductCard />,
-  },
-  {
-    id: 3,
-    element: <ProductCard />,
-  },
-  {
-    id: 4,
-    element: <ProductCard />,
-  },
-  {
-    id: 5,
-    element: <ProductCard />,
-  },
-];
-
-export const Products = (props: ProductsProps) => {
+export const Products = ({ data }: ProductsProps) => {
+  const slider_elements = data?.map((item: any) => ({
+    id: item?.id,
+    element: <ProductCard item={item} />,
+  }));
   return (
     <div className="bg-secondary/20">
       <SectionWrapper>

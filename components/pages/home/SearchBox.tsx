@@ -16,7 +16,7 @@ export const SearchBoxComponent = (props: SearchBoxProps) => {
           className="w-full bg-paragraph px-4 py-5 text-xs shadow-main outline-none placeholder:text-svg lg:text-base"
           placeholder="Find Products, Application, Systems and Solutions....."
         />
-        <BiSearch className="absolute end-4 top-1/2 size-4 -translate-y-1/2 text-[#5A5A5A]" />
+        <BiSearch className="text-secGray absolute end-4 top-1/2 size-4 -translate-y-1/2" />
       </div>
     </div>
   );

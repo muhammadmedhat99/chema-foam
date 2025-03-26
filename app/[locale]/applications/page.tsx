@@ -92,7 +92,7 @@ export default function page({
                     <h6 className="text-center text-xl font-bold text-primary">
                       Cement Waterproofing
                     </h6>
-                    <p className="text-sm text-[#5a5a5a]">
+                    <p className="text-secGray text-sm">
                       Orhun Kimya waterproofing application product range
                       consists of one-piece, high-quality, pollution-free
                       waterproof membrane coatings. Our range of waterproofing
@@ -115,7 +115,7 @@ export default function page({
                     <h6 className="text-center text-xl font-bold text-primary">
                       Cement Waterproofing
                     </h6>
-                    <p className="text-sm text-[#5a5a5a]">
+                    <p className="text-secGray text-sm">
                       Orhun Kimya waterproofing application product range
                       consists of one-piece, high-quality, pollution-free
                       waterproof membrane coatings. Our range of waterproofing

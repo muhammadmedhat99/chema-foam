@@ -5,32 +5,19 @@ import { SectionWrapper } from "@/components/global/SectionWrapper";
 import { ApplicationCard } from "@/components/global/ApplicationCard";
 import { FadeIn } from "@/components/global/FadeIn";
 
-type ApplicationsProps = {};
+type ApplicationsProps = { data: any };
 
-const slider_elements = [
-  {
-    id: 1,
-    element: <ApplicationCard />,
-  },
-  {
-    id: 2,
-    element: <ApplicationCard />,
-  },
-  {
-    id: 3,
-    element: <ApplicationCard />,
-  },
-  {
-    id: 4,
-    element: <ApplicationCard />,
-  },
-  {
-    id: 5,
-    element: <ApplicationCard />,
-  },
-];
-
-export const Applications = (props: ApplicationsProps) => {
+export const Applications = ({ data }: ApplicationsProps) => {
+  const slider_elements = data?.map((item: any) => ({
+    id: item?.id,
+    element: (
+      <ApplicationCard
+        title={item?.title}
+        description={item?.description}
+        image={item?.home_page_card_image[0]?.image}
+      />
+    ),
+  }));
   return (
     <SectionWrapper>
       <FadeIn duration={0.5}>

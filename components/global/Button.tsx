@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import React from "react";
 type ButtonProps = {
   text: string;
@@ -7,6 +7,7 @@ type ButtonProps = {
   href?: string;
   children?: React.ReactNode;
   className?: string;
+  type?: string;
 };
 export const Button = ({
   text,
@@ -14,6 +15,7 @@ export const Button = ({
   href = "/",
   children,
   className,
+  type,
 }: ButtonProps) => {
   return (
     <>

@@ -9,7 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { LucideLayoutGrid } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import React from "react";
 import { BiUserPin } from "react-icons/bi";
 import { CgArrowTopRightO } from "react-icons/cg";
@@ -42,7 +42,7 @@ export default function page() {
                   icon={<CiLocationOn size={36} />}
                 >
                   <div className="flex flex-col gap-1 px-7">
-                    <h6 className="font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="font-bold uppercase text-secGray">
                       Factory
                     </h6>
                     <Link
@@ -54,7 +54,7 @@ export default function page() {
                         <CgArrowTopRightO />
                       </span>
                     </Link>
-                    <h6 className="mt-5 font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="mt-5 font-bold uppercase text-secGray">
                       office
                     </h6>
                     <Link
@@ -75,7 +75,7 @@ export default function page() {
                   icon={<SlCallOut size={36} />}
                 >
                   <div className="flex flex-col gap-1 px-7">
-                    <h6 className="font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="font-bold uppercase text-secGray">
                       Factory
                     </h6>
                     <Link
@@ -87,7 +87,7 @@ export default function page() {
                         <CgArrowTopRightO />
                       </span>
                     </Link>
-                    <h6 className="mt-5 font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="mt-5 font-bold uppercase text-secGray">
                       office
                     </h6>
                     <Link
@@ -108,7 +108,7 @@ export default function page() {
                   icon={<BiUserPin size={36} />}
                 >
                   <div className="flex flex-col gap-1 px-7">
-                    <h6 className="font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="font-bold uppercase text-secGray">
                       Factory
                     </h6>
                     <Link
@@ -120,7 +120,7 @@ export default function page() {
                         <CgArrowTopRightO />
                       </span>
                     </Link>
-                    <h6 className="mt-5 font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="mt-5 font-bold uppercase text-secGray">
                       office
                     </h6>
                     <Link
@@ -155,7 +155,7 @@ export default function page() {
                   icon={<SlCallOut size={32} />}
                 >
                   <div className="flex flex-col gap-1 px-7">
-                    <h6 className="font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="font-bold uppercase text-secGray">
                       Nasr City
                     </h6>
                     <Link
@@ -167,7 +167,7 @@ export default function page() {
                       </span>
                       +201558890007
                     </Link>
-                    <h6 className="mt-5 font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="mt-5 font-bold uppercase text-secGray">
                       Maadi
                     </h6>
                     <Link
@@ -187,7 +187,7 @@ export default function page() {
                   icon={<SlCallOut size={32} />}
                 >
                   <div className="flex flex-col gap-1 px-7">
-                    <h6 className="font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="font-bold uppercase text-secGray">
                       Nasr City
                     </h6>
                     <Link
@@ -199,7 +199,7 @@ export default function page() {
                       </span>
                       +201558890007
                     </Link>
-                    <h6 className="mt-5 font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="mt-5 font-bold uppercase text-secGray">
                       Maadi
                     </h6>
                     <Link
@@ -219,7 +219,7 @@ export default function page() {
                   icon={<SlCallOut size={32} />}
                 >
                   <div className="flex flex-col gap-1 px-7">
-                    <h6 className="font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="font-bold uppercase text-secGray">
                       Nasr City
                     </h6>
                     <Link
@@ -231,7 +231,7 @@ export default function page() {
                       </span>
                       +201558890007
                     </Link>
-                    <h6 className="mt-5 font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="mt-5 font-bold uppercase text-secGray">
                       Maadi
                     </h6>
                     <Link
@@ -251,7 +251,7 @@ export default function page() {
                   icon={<SlCallOut size={32} />}
                 >
                   <div className="flex flex-col gap-1 px-7">
-                    <h6 className="font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="font-bold uppercase text-secGray">
                       Nasr City
                     </h6>
                     <Link
@@ -263,7 +263,7 @@ export default function page() {
                       </span>
                       +201558890007
                     </Link>
-                    <h6 className="mt-5 font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="mt-5 font-bold uppercase text-secGray">
                       Maadi
                     </h6>
                     <Link
@@ -283,7 +283,7 @@ export default function page() {
                   icon={<SlCallOut size={32} />}
                 >
                   <div className="flex flex-col gap-1 px-7">
-                    <h6 className="font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="font-bold uppercase text-secGray">
                       Nasr City
                     </h6>
                     <Link
@@ -295,7 +295,7 @@ export default function page() {
                       </span>
                       +201558890007
                     </Link>
-                    <h6 className="mt-5 font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="mt-5 font-bold uppercase text-secGray">
                       Maadi
                     </h6>
                     <Link
@@ -315,7 +315,7 @@ export default function page() {
                   icon={<SlCallOut size={32} />}
                 >
                   <div className="flex flex-col gap-1 px-7">
-                    <h6 className="font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="font-bold uppercase text-secGray">
                       Nasr City
                     </h6>
                     <Link
@@ -327,7 +327,7 @@ export default function page() {
                       </span>
                       +201558890007
                     </Link>
-                    <h6 className="mt-5 font-bold uppercase text-[#5A5A5A]">
+                    <h6 className="mt-5 font-bold uppercase text-secGray">
                       Maadi
                     </h6>
                     <Link

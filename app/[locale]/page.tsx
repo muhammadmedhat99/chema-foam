@@ -15,18 +15,19 @@ export default async function Home({
 }: {
   params: { locale: "en" | "ar" };
 }) {
-  const { locale } = await params;
+  const { locale } = params;
   const data = await fetchData(`page/Home/${locale}`, locale);
+  console.log(" data ===>>", data);
   return (
     <div className="">
-      <Slider />
+      <Slider data={data?.header} />
       <div className="pb-40">
         <SearchBoxComponent />
         <Categories />
       </div>
-      <About />
-      <Applications />
-      <Products />
+      <About data={data?.aboutUs} />
+      <Applications data={data?.applications} />
+      <Products data={data?.products} />
       <Systems />
       <Clients />
       <SocialMedia />

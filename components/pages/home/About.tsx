@@ -4,20 +4,20 @@ import { PageHeader } from "@/components/global/PageHeader";
 import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-type AboutProps = {};
+type AboutProps = { data: any };
 
-export const About = (props: AboutProps) => {
+export const About = ({ data }: AboutProps) => {
   return (
     <div className="bg-[#1EBAE51A] px-2 py-20">
       <div className="mx-auto max-w-7xl">
         <FadeIn duration={0.5}>
-          <PageHeader title="About Chema Foam" />
+          <PageHeader title={data[0]?.title} />
         </FadeIn>
 
         <FadeIn duration={0.8} delay={0.5}>
           <div className="mt-10 grid grid-cols-1 gap-9 md:grid-cols-2">
             <iframe
-              src="https://www.youtube.com/embed/qGBCn9j5TZk?si=3LEH5PZMqgdSU-LS"
+              src={data[0]?.videos[0]?.video_url}
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
@@ -26,21 +26,16 @@ export const About = (props: AboutProps) => {
             ></iframe>
 
             <div className="flex h-full flex-col gap-3.5">
-              <p className="text-xl font-bold tracking-wide text-primary">
-                Chema foam is a company that specialized in providing
-                innovative, modern, and advanced engineering solutions, systems,
-                and building applications.
-              </p>
-              <p className="leading-6 text-[#5A5A5A]">
-                Chema Foam produces many polystyrene foam products and dry mix
-                products as modern products in the field The world of
-                construction, thermal and waterproof insulation, and industrial
-                packaging. Our products and services serve many Vital industries
-                in the business world, such as the building and construction
-                sector, the contracting sector, and the commodities sector The
-                durable, transport sector, refrigerated transport, agricultural
-                sector, furniture, and decoration
-              </p>
+              {/* <p
+                className="text-xl font-bold tracking-wide text-primary"
+                dangerouslySetInnerHTML={{ __html: data[0]?.description }}
+              /> */}
+
+              <p
+                className="text-secGray leading-6"
+                dangerouslySetInnerHTML={{ __html: data[0]?.description }}
+              />
+
               <Button
                 text="Who We Are"
                 isLink={true}

@@ -8,7 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ChevronDown } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 type Props = {};
 
 export const Faq = (props: Props) => {
@@ -18,9 +18,9 @@ export const Faq = (props: Props) => {
         <PageHeader title="Frequently asked questions" />
         <Accordion type="single" collapsible className="py-10">
           <AccordionItem className="border-b-0" value="item-1">
-            <AccordionTrigger className="text-[#5a5a5a]">
+            <AccordionTrigger className="text-secGray">
               <div className="flex gap-1">
-                <QuestionMark className="size-6 stroke-[#5a5a5a]" />
+                <QuestionMark className="size-6 stroke-secGray" />
                 Where can i access my projects?
               </div>
             </AccordionTrigger>
@@ -33,9 +33,9 @@ export const Faq = (props: Props) => {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem className="border-b-0" value="item-2">
-            <AccordionTrigger className="text-[#5a5a5a]">
+            <AccordionTrigger className="text-secGray">
               <div className="flex gap-1">
-                <QuestionMark className="size-6 stroke-[#5a5a5a]" />
+                <QuestionMark className="size-6 stroke-secGray" />
                 Where can i access my projects?
               </div>
             </AccordionTrigger>
@@ -48,9 +48,9 @@ export const Faq = (props: Props) => {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem className="border-b-0" value="item-3">
-            <AccordionTrigger className="text-[#5a5a5a]">
+            <AccordionTrigger className="text-secGray">
               <div className="flex gap-1">
-                <QuestionMark className="size-6 stroke-[#5a5a5a]" />
+                <QuestionMark className="size-6 stroke-secGray" />
                 Where can i access my projects?
               </div>
             </AccordionTrigger>
@@ -63,9 +63,9 @@ export const Faq = (props: Props) => {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem className="border-b-0" value="item-4">
-            <AccordionTrigger className="text-[#5a5a5a]">
+            <AccordionTrigger className="text-secGray">
               <div className="flex gap-1">
-                <QuestionMark className="size-6 stroke-[#5a5a5a]" />
+                <QuestionMark className="size-6 stroke-secGray" />
                 Where can i access my projects?
               </div>
             </AccordionTrigger>

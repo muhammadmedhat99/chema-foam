@@ -32,16 +32,16 @@ export const ProductDetails = () => {
         </div>
       </div>
       <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-        <button className="flex grow items-center justify-center gap-2 bg-paragraph px-5 py-3.5 font-bold text-[#5A5A5A]">
-          <VideoIcon width={24} height={18} className="fill-[#5A5A5A]" />
+        <button className="text-secGray flex grow items-center justify-center gap-2 bg-paragraph px-5 py-3.5 font-bold">
+          <VideoIcon width={24} height={18} className="fill-secGray" />
           Watching Video
         </button>
-        <button className="flex grow items-center justify-center gap-2 bg-paragraph px-5 py-3.5 font-bold text-[#5A5A5A]">
-          <CalculatorIcon width={24} height={18} className="fill-[#5A5A5A]" />
+        <button className="text-secGray flex grow items-center justify-center gap-2 bg-paragraph px-5 py-3.5 font-bold">
+          <CalculatorIcon width={24} height={18} className="fill-secGray" />
           Quantity Calculation
         </button>
-        <button className="flex grow items-center justify-center gap-2 bg-paragraph px-5 py-3.5 font-bold text-[#5A5A5A]">
-          <DownloadIcon width={24} height={18} className="fill-[#5A5A5A]" />
+        <button className="text-secGray flex grow items-center justify-center gap-2 bg-paragraph px-5 py-3.5 font-bold">
+          <DownloadIcon width={24} height={18} className="fill-secGray" />
           Download Files
         </button>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 import { NavItem } from "@/types";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { usePathname } from "next/navigation";
 
 import React, { Fragment, useState } from "react";

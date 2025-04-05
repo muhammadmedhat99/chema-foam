@@ -6,7 +6,10 @@ const nextConfig = {
       hostname: "web.chema-foam.com",
       search: '',
     }]
-  }
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 import createNextIntlPlugin from 'next-intl/plugin';

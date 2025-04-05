@@ -1,9 +1,16 @@
 import { BreadcrumbComponent } from "@/components/global/Breadcrumb";
 import { PageHeader } from "@/components/global/PageHeader";
 import { VideoCard } from "@/components/pages/videos/VideoCard";
+import fetchData from "@/utils/api";
 import React from "react";
 
-export default function page() {
+export default async function page({
+  params,
+}: {
+  params: { locale: "en" | "ar" };
+}) {
+  const { locale } = params;
+  const data = await fetchData(`page/Videos/${locale}`, locale);
   return (
     <div>
       <BreadcrumbComponent
@@ -14,12 +21,42 @@ export default function page() {
         <PageHeader title="Products Applications" />
 
         <div className="mt-10 grid gap-3 px-2 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-9">
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
+          {data?.products_videos?.map((item: any) => (
+            <VideoCard
+              key={item?.id}
+              name={item?.title}
+              description={item?.subtitle}
+              url={item?.videos[0]?.video_url}
+            />
+          ))}
+        </div>
+        <div className="mt-10">
+          <PageHeader title="Systems Videos" />
+
+          <div className="mt-10 grid gap-3 px-2 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-9">
+            {data?.systems_videos?.map((item: any) => (
+              <VideoCard
+                key={item?.id}
+                name={item?.title}
+                description={item?.subtitle}
+                url={item?.videos[0]?.video_url}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="mt-10">
+          <PageHeader title="Other Videos" />
+
+          <div className="mt-10 grid gap-3 px-2 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-9">
+            {data?.other_videos?.map((item: any) => (
+              <VideoCard
+                key={item?.id}
+                name={item?.title}
+                description={item?.description}
+                url={item?.video_url}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

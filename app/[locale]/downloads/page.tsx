@@ -1,8 +1,17 @@
 import { BreadcrumbComponent } from "@/components/global/Breadcrumb";
 import { Sidebar } from "@/components/pages/applications/Sidebar";
 import { DownloadCard } from "@/components/pages/downloads/DownloadCard";
+import { DownloadComponent } from "@/components/pages/downloads/DownloadComponent";
+import fetchData from "@/utils/api";
 
-export default function page() {
+export default async function page({
+  params,
+}: {
+  params: { locale: "en" | "ar" };
+}) {
+  const { locale } = params;
+  const data = await fetchData(`page/Downloads/${locale}`, locale);
+
   return (
     <div>
       <BreadcrumbComponent
@@ -10,20 +19,7 @@ export default function page() {
         pages={[{ title: "Home", href: "/" }, { title: "Downloads" }]}
       />
 
-      <div className="mx-auto my-20 max-w-7xl px-2">
-        <div className="grid gap-3 lg:grid-cols-4 lg:gap-9">
-          <Sidebar filterTitle="Filter" />
-
-          <div className="grid gap-3 md:grid-cols-2 md:gap-6 lg:col-span-3 lg:grid-cols-3 lg:gap-9">
-            <DownloadCard />
-            <DownloadCard />
-            <DownloadCard />
-            <DownloadCard />
-            <DownloadCard />
-            <DownloadCard />
-          </div>
-        </div>
-      </div>
+      <DownloadComponent data={data} />
     </div>
   );
 }

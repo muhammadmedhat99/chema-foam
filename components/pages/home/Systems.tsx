@@ -8,7 +8,7 @@ import { Button } from "@/components/global/Button";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FadeIn } from "@/components/global/FadeIn";
 
-type SystemsProps = {};
+type SystemsProps = { data: any };
 
 const slider_elements = [
   {
@@ -44,12 +44,14 @@ const slider_elements = [
       </div>
     ),
   },
-  {
-    id: 2,
+];
+export const Systems = ({ data }: SystemsProps) => {
+  const slider_elements = data?.map((item: any) => ({
+    id: item?.id,
     element: (
       <div className="flex w-full flex-col items-center justify-center lg:flex-row">
         <Image
-          src="/imgs/systems/1.png"
+          src={item?.home_page_card_image[0]?.image || "/imgs/systems/1.png"}
           alt="System image"
           width={500}
           height={500}
@@ -57,13 +59,10 @@ const slider_elements = [
 
         <div className="flex w-full flex-col gap-4 bg-primary p-5 lg:p-14">
           <p className="text-3xl font-bold leading-tight text-secondary">
-            Chema Foam is simply dummy text of the printing and typesetting
-            industry.
+            {item?.title}
           </p>
           <p className="text-xl leading-10 tracking-widest text-white">
-            lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. by injected humour, or randomised words which don't look
-            even slightly believable. by injected humour.
+            {item?.description}
           </p>
           <Button
             text="Who We Are"
@@ -76,9 +75,7 @@ const slider_elements = [
         </div>
       </div>
     ),
-  },
-];
-export const Systems = (props: SystemsProps) => {
+  }));
   return (
     <SectionWrapper className="max-w-7xl">
       <FadeIn delay={0.5}>

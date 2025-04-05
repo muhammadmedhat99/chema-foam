@@ -9,83 +9,40 @@ import {
 } from "@/components/ui/accordion";
 import { ChevronDown } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-type Props = {};
+type Props = { data: any };
 
-export const Faq = (props: Props) => {
+export const Faq = ({ data }: Props) => {
   return (
     <div className="mx-auto max-w-7xl">
       <SectionWrapper>
         <PageHeader title="Frequently asked questions" />
         <Accordion type="single" collapsible className="py-10">
-          <AccordionItem className="border-b-0" value="item-1">
-            <AccordionTrigger className="text-secGray">
-              <div className="flex gap-1">
-                <QuestionMark className="size-6 stroke-secGray" />
-                Where can i access my projects?
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="text-svg">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Assumenda omnis non facere quis laborum voluptate, commodi,
-              excepturi vero quidem, totam labore veniam! Facere beatae rerum
-              possimus ipsa voluptates reiciendis commodi hic, laboriosam quia
-              eaque ducimus.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem className="border-b-0" value="item-2">
-            <AccordionTrigger className="text-secGray">
-              <div className="flex gap-1">
-                <QuestionMark className="size-6 stroke-secGray" />
-                Where can i access my projects?
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="text-svg">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Assumenda omnis non facere quis laborum voluptate, commodi,
-              excepturi vero quidem, totam labore veniam! Facere beatae rerum
-              possimus ipsa voluptates reiciendis commodi hic, laboriosam quia
-              eaque ducimus.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem className="border-b-0" value="item-3">
-            <AccordionTrigger className="text-secGray">
-              <div className="flex gap-1">
-                <QuestionMark className="size-6 stroke-secGray" />
-                Where can i access my projects?
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="text-svg">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Assumenda omnis non facere quis laborum voluptate, commodi,
-              excepturi vero quidem, totam labore veniam! Facere beatae rerum
-              possimus ipsa voluptates reiciendis commodi hic, laboriosam quia
-              eaque ducimus.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem className="border-b-0" value="item-4">
-            <AccordionTrigger className="text-secGray">
-              <div className="flex gap-1">
-                <QuestionMark className="size-6 stroke-secGray" />
-                Where can i access my projects?
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="text-svg">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Assumenda omnis non facere quis laborum voluptate, commodi,
-              excepturi vero quidem, totam labore veniam! Facere beatae rerum
-              possimus ipsa voluptates reiciendis commodi hic, laboriosam quia
-              eaque ducimus.
-            </AccordionContent>
-          </AccordionItem>
+          {data?.map((item: any) => (
+            <AccordionItem
+              className="border-b-0"
+              value={`item-${item?.id}`}
+              key={item?.id}
+            >
+              <AccordionTrigger className="text-secGray">
+                <div className="flex gap-1">
+                  <QuestionMark className="size-6 stroke-secGray" />
+                  {item?.question}
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="text-svg">
+                {item?.awnser}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
         </Accordion>
 
-        <Link
+        {/* <Link
           href="/faq"
           className="flex items-center justify-center gap-1 text-xl font-semibold text-primary"
         >
           <span>View More</span>
           <ChevronDown className="mt-1" />
-        </Link>
+        </Link> */}
       </SectionWrapper>
     </div>
   );

@@ -17,7 +17,6 @@ export default async function Home({
 }) {
   const { locale } = params;
   const data = await fetchData(`page/Home/${locale}`, locale);
-  console.log(" data ===>>", data);
   return (
     <div className="">
       <Slider data={data?.header} />
@@ -28,10 +27,10 @@ export default async function Home({
       <About data={data?.aboutUs} />
       <Applications data={data?.applications} />
       <Products data={data?.products} />
-      <Systems />
-      <Clients />
-      <SocialMedia />
-      <Faq />
+      <Systems data={data?.systems} />
+      <Clients data={data?.projects} clients={data?.clients} />
+      <SocialMedia data={data?.socialPosts?.data} />
+      <Faq data={data?.questions} />
     </div>
   );
 }

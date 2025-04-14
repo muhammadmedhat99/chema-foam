@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { IoIosArrowBack, IoIosArrowForward, IoIosPlay } from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useRef } from "react";
 
 type MainSliderProps = {
@@ -33,12 +33,12 @@ export const MainSlider = ({
   sliderElements,
   autoPlay = false,
   slidesPreview = 4,
-  spaceBetweenSlides = 36,
+  spaceBetweenSlides = 30,
   centeredSlides = false,
   loop = false,
   breakPoints,
   mainClassName = "pt-2 lg:pt-40",
-  wrapperClassName = "px-16",
+  wrapperClassName = "px-0",
   slideClassName = "flex max-w-[310px] items-center justify-center",
   showArrows = true,
 }: MainSliderProps) => {
@@ -85,7 +85,7 @@ export const MainSlider = ({
           </SwiperSlide>
         ))}
         {showArrows && (
-          <div className="absolute left-0 right-0 top-1/2 z-50 flex -translate-y-1/2 items-center justify-between">
+          <div className="absolute left-0 right-0 top-1/2 z-[9999] flex -translate-y-1/2 items-center justify-between">
             <div
               className="cursor-pointer bg-paragraph p-4 text-lg text-svg"
               onClick={handlePrev}

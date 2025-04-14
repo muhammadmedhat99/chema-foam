@@ -18,6 +18,7 @@ export const DownloadComponent = ({ data }: DownloadComponentProps) => {
           filters={data?.sidebar}
           selectedIds={selectedIds}
           setSelectedIds={setSelectedIds}
+          defaultCat="products"
         />
 
         <div className="grid gap-3 md:grid-cols-2 md:gap-6 lg:col-span-3 lg:grid-cols-3 lg:gap-9">

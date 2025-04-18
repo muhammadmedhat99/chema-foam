@@ -7,7 +7,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Checkbox } from "@/components/ui/checkbox";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 
 interface SidebarProps {
   filterTitle: string;
@@ -16,7 +17,11 @@ interface SidebarProps {
   setSelectedIds: React.Dispatch<React.SetStateAction<string[]>>;
   defaultName?: string;
   defaultCat?: string;
+  singleSelection?: boolean;
+  searchParamKey?: string;
+  initialSelection?: string[];
 }
+
 export const Sidebar = ({
   filterTitle,
   filters,
@@ -24,12 +29,68 @@ export const Sidebar = ({
   setSelectedIds,
   defaultName = "title",
   defaultCat = "product",
+  singleSelection,
+  searchParamKey,
+  initialSelection = [],
 }: SidebarProps) => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Initialize selection from URL or props
+  useEffect(() => {
+    if (isInitialized) return;
+
+    if (searchParamKey) {
+      // Sync from URL param if available
+      const paramValue = searchParams.get(searchParamKey);
+      if (paramValue) {
+        setSelectedIds([paramValue]);
+      } else if (initialSelection.length > 0) {
+        // Fall back to server-side initial selection
+        setSelectedIds(initialSelection);
+      }
+    } else if (initialSelection.length > 0) {
+      // For non-URL cases, use server-side initial selection
+      setSelectedIds(initialSelection);
+    }
+
+    setIsInitialized(true);
+  }, [
+    searchParams,
+    searchParamKey,
+    initialSelection,
+    isInitialized,
+    setSelectedIds,
+  ]);
+
   const handleCheckboxChange = (productId: string, checked: boolean) => {
-    setSelectedIds((prev) =>
-      checked ? [...prev, productId] : prev.filter((id) => id !== productId),
-    );
+    if (singleSelection) {
+      const newSelection = checked ? [productId] : [];
+      setSelectedIds(newSelection);
+
+      if (searchParamKey) {
+        const params = new URLSearchParams(searchParams.toString());
+        if (checked) {
+          params.set(searchParamKey, productId);
+        } else {
+          params.delete(searchParamKey);
+        }
+        router.replace(`${pathname}?${params.toString()}`);
+      }
+    } else {
+      setSelectedIds((prev) =>
+        checked ? [...prev, productId] : prev.filter((id) => id !== productId),
+      );
+    }
   };
+
+  // Check if a product is selected
+  const isProductChecked = (productId: string) => {
+    return selectedIds.includes(productId);
+  };
+
   return (
     <div className="h-fit w-full bg-secondary/10 px-6 py-8">
       <div className="flex items-center justify-start gap-2">
@@ -64,7 +125,7 @@ export const Sidebar = ({
                     </label>
                     <Checkbox
                       id={product?.id}
-                      checked={selectedIds.includes(product?.id)}
+                      checked={isProductChecked(product?.id)}
                       onCheckedChange={(checked) =>
                         handleCheckboxChange(product?.id, checked as boolean)
                       }
@@ -77,149 +138,7 @@ export const Sidebar = ({
           ))}
         </Accordion>
       ) : (
-        <Accordion
-          type="multiple"
-          defaultValue={["item-1", "item-2", "item-3"]}
-        >
-          <AccordionItem value="item-1" className="border-b-0">
-            <AccordionTrigger className="text-lg font-semibold text-primary">
-              Insulation & construction
-            </AccordionTrigger>
-            <AccordionContent className="space-y-4">
-              <div className="flex items-center justify-between pl-3">
-                <label
-                  htmlFor="thermal_insulation"
-                  className="text-sm text-primary"
-                >
-                  Thermal Insulation
-                </label>
-                <Checkbox
-                  id="thermal_insulation"
-                  className="data-[state=checked]:text-white"
-                />
-              </div>
-              <div className="flex items-center justify-between pl-3">
-                <label htmlFor="waterproofing" className="text-sm text-primary">
-                  Waterproofing
-                </label>
-                <Checkbox
-                  id="waterproofing"
-                  className="data-[state=checked]:text-white"
-                />
-              </div>
-              <div className="flex items-center justify-between pl-3">
-                <label htmlFor="tile_adhesive" className="text-sm text-primary">
-                  Tile Adhesive
-                </label>
-                <Checkbox
-                  id="tile_adhesive"
-                  className="data-[state=checked]:text-white"
-                />
-              </div>
-              <div className="flex items-center justify-between pl-3">
-                <label htmlFor="light_wight" className="text-sm text-primary">
-                  Light-Weight Concrete
-                </label>
-                <Checkbox
-                  id="light_wight"
-                  className="data-[state=checked]:text-white"
-                />
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-2" className="border-b-0">
-            <AccordionTrigger className="text-lg font-semibold text-primary">
-              Creative solution
-            </AccordionTrigger>
-            <AccordionContent className="space-y-4">
-              <div className="flex items-center justify-between pl-3">
-                <label
-                  htmlFor="thermal_insulation"
-                  className="text-sm text-primary"
-                >
-                  Thermal Insulation
-                </label>
-                <Checkbox
-                  id="thermal_insulation"
-                  className="data-[state=checked]:text-white"
-                />
-              </div>
-              <div className="flex items-center justify-between pl-3">
-                <label htmlFor="waterproofing" className="text-sm text-primary">
-                  Waterproofing
-                </label>
-                <Checkbox
-                  id="waterproofing"
-                  className="data-[state=checked]:text-white"
-                />
-              </div>
-              <div className="flex items-center justify-between pl-3">
-                <label htmlFor="tile_adhesive" className="text-sm text-primary">
-                  Tile Adhesive
-                </label>
-                <Checkbox
-                  id="tile_adhesive"
-                  className="data-[state=checked]:text-white"
-                />
-              </div>
-              <div className="flex items-center justify-between pl-3">
-                <label htmlFor="light_wight" className="text-sm text-primary">
-                  Light-Weight Concrete
-                </label>
-                <Checkbox
-                  id="light_wight"
-                  className="data-[state=checked]:text-white"
-                />
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-3" className="border-b-0">
-            <AccordionTrigger className="text-lg font-semibold text-primary">
-              Packing & packaging
-            </AccordionTrigger>
-            <AccordionContent className="space-y-4">
-              <div className="flex items-center justify-between pl-3">
-                <label
-                  htmlFor="thermal_insulation"
-                  className="text-sm text-primary"
-                >
-                  Thermal Insulation
-                </label>
-                <Checkbox
-                  id="thermal_insulation"
-                  className="data-[state=checked]:text-white"
-                />
-              </div>
-              <div className="flex items-center justify-between pl-3">
-                <label htmlFor="waterproofing" className="text-sm text-primary">
-                  Waterproofing
-                </label>
-                <Checkbox
-                  id="waterproofing"
-                  className="data-[state=checked]:text-white"
-                />
-              </div>
-              <div className="flex items-center justify-between pl-3">
-                <label htmlFor="tile_adhesive" className="text-sm text-primary">
-                  Tile Adhesive
-                </label>
-                <Checkbox
-                  id="tile_adhesive"
-                  className="data-[state=checked]:text-white"
-                />
-              </div>
-              <div className="flex items-center justify-between pl-3">
-                <label htmlFor="light_wight" className="text-sm text-primary">
-                  Light-Weight Concrete
-                </label>
-                <Checkbox
-                  id="light_wight"
-                  className="data-[state=checked]:text-white"
-                />
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
+        <></>
       )}
     </div>
   );

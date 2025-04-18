@@ -66,7 +66,7 @@ export const ProductCard = ({ item }: ProductCardProps) => {
               <EyeIcon width={19} height={11} className="fill-secGray" />
             </button>
           </DialogTrigger>
-          <DialogContent className="max-h-[320px] overflow-y-auto sm:max-h-[450px] sm:max-w-[825px] md:max-h-[540px] lg:max-h-[620px]">
+          <DialogContent className="max-h-[320px] overflow-y-auto sm:max-h-[450px] sm:max-w-[825px] md:max-h-[500px] xl:max-h-[540px]">
             <DialogHeader>
               <DialogTitle className="text-center">{item?.title}</DialogTitle>
               <Image
@@ -131,7 +131,7 @@ export const ProductCard = ({ item }: ProductCardProps) => {
               <VideoIcon width={18} height={14} className="fill-secGray" />
             </button>
           </DialogTrigger>
-          <DialogContent className="max-h-[320px] overflow-y-auto sm:max-h-[450px] sm:max-w-[825px] md:max-h-[540px] lg:max-h-[620px]">
+          <DialogContent className="max-h-[320px] overflow-y-auto sm:max-h-[450px] sm:max-w-[825px] md:max-h-[500px] xl:max-h-[540px]">
             <DialogHeader>
               <DialogTitle className="text-center">
                 {item?.title} Video
@@ -156,7 +156,7 @@ export const ProductCard = ({ item }: ProductCardProps) => {
               <CalculatorIcon width={17} height={18} className="fill-secGray" />
             </button>
           </DialogTrigger>
-          <DialogContent className="max-h-[320px] overflow-y-auto sm:max-h-[450px] sm:max-w-[825px] md:max-h-[540px] lg:max-h-[620px]">
+          <DialogContent className="max-h-[320px] overflow-y-auto sm:max-h-[450px] sm:max-w-[825px] md:max-h-[500px] xl:max-h-[540px]">
             <DialogHeader>
               <DialogTitle className="text-center">{item?.title}</DialogTitle>
               <div className="flex items-center justify-center">
@@ -275,7 +275,7 @@ export const ProductCard = ({ item }: ProductCardProps) => {
               <DownloadIcon width={16} height={18} className="fill-secGray" />
             </button>
           </DialogTrigger>
-          <DialogContent className="max-h-[320px] overflow-y-auto sm:max-h-[450px] sm:max-w-[825px] md:max-h-[540px] lg:max-h-[620px]">
+          <DialogContent className="max-h-[320px] overflow-y-auto sm:max-h-[450px] sm:max-w-[825px] md:max-h-[500px] xl:max-h-[540px]">
             <DialogHeader>
               <DialogTitle className="text-center">{item?.title}</DialogTitle>
               <div className="flex items-center justify-center">
@@ -331,23 +331,23 @@ export const ProductCard = ({ item }: ProductCardProps) => {
   );
 };
 
-export const ProductEmptyCard = (props: ProductCardProps) => {
+export const ProductEmptyCard = ({ item }: ProductCardProps) => {
   return (
     <div className="relative flex w-full flex-col gap-1.5 border border-secondary">
       <Image
-        src="/imgs/products/1.png"
+        src={item?.card_image?.image}
         width={1024}
         height={1024}
-        alt="application image"
+        alt={item?.title}
         className="h-[244px] w-[273px] object-contain p-7 duration-300"
       />
 
       <h6 className="text-center text-2xl font-bold text-primary">
-        Chema Proof 105
+        {item?.title}
       </h6>
 
       <div className="absolute bottom-0 right-0 flex h-[43px] w-[74px] items-center justify-center bg-secondary font-bold text-primary">
-        25 kg
+        {item?.weight} {item?.unit_of_measure}
       </div>
     </div>
   );

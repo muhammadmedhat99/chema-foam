@@ -15,20 +15,26 @@ export default async function page({
 }) {
   const { locale } = params;
   const data = await fetchData(`page/Products/${locale}`, locale);
+  const mainData = await fetchData(
+    `page/Product/show/${searchParams?.product}`,
+    locale,
+  );
   return (
     <div>
       <BreadcrumbComponent
-        pageTitle={searchParams?.product || "Products"}
+        pageTitle={mainData?.product?.title || "Products"}
         pages={[
           { title: "Home", href: "/" },
-          { title: searchParams?.product || "Products" },
+          { title: mainData?.product?.title || "Products" },
         ]}
       />
       <div className="mx-auto my-20 max-w-7xl px-2">
         <div className="grid gap-3 lg:grid-cols-4 lg:gap-9">
-          <Sidebar filterTitle="Products" filters={data?.sidebar} />
-
-          <ProductDetails />
+          <ProductDetails
+            data={data}
+            productData={mainData?.product}
+            related={mainData?.related_product}
+          />
         </div>
       </div>
     </div>

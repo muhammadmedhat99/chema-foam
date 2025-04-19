@@ -7,7 +7,7 @@ import {
 import { Briefcase } from "lucide-react";
 
 type CustomAccordionProps = {
-  title: string;
+  title: string | React.ReactNode;
   icon: React.ReactNode;
   content?: React.ReactNode;
 };

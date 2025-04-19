@@ -31,33 +31,33 @@ const navItems: NavItem[] = [
     sublinks: [
       {
         label: "Thermal Insulation",
-        href: "/applications?app=thermal-insulation",
+        href: "/applications?app=1",
       },
-      { label: "Waterproofing", href: "/applications?app=waterproofing" },
-      { label: "Tile Adhesive", href: "/applications?app=tile-adhesive" },
+      { label: "Waterproofing", href: "/applications?app=2" },
+      { label: "Tile Adhesive", href: "/applications?app=3" },
       {
         label: "Insulation & construction",
         href: "#",
         sublinks: [
           {
             label: "Light-Weight Concrete",
-            href: "/applications?app=light-weight-concrete",
+            href: "/applications?app=4",
           },
           {
             label: "Chema Protection System",
-            href: "/applications?app=chema-protection-system",
+            href: "/applications?app=5",
           },
-          { label: "Geo Foam", href: "/applications?app=geo-foam" },
-          { label: "Floor Raising", href: "/applications?app=floor-raising" },
+          { label: "Geo Foam", href: "/applications?app=6" },
+          { label: "Floor Raising", href: "/applications?app=7" },
         ],
       },
       {
         label: "Outdoor Decoration",
-        href: "/applications?app=outdoor-decoration",
+        href: "/applications?app=1",
       },
       {
         label: "3D Models",
-        href: "/applications?app=3d-models",
+        href: "/applications?app=2",
       },
     ],
   },
@@ -67,33 +67,33 @@ const navItems: NavItem[] = [
     sublinks: [
       {
         label: "Thermal Insulation",
-        href: "/products?product=thermal-insulation",
+        href: "/products?product=1",
       },
-      { label: "Waterproofing", href: "/products?product=waterproofing" },
-      { label: "Tile Adhesive", href: "/products?product=tile-adhesive" },
+      { label: "Waterproofing", href: "/products?product=2" },
+      { label: "Tile Adhesive", href: "/products?product=3" },
       {
         label: "Insulation & construction",
         href: "#",
         sublinks: [
           {
             label: "Light-Weight Concrete",
-            href: "/products?product=light-weight-concrete",
+            href: "/products?product=4",
           },
           {
             label: "Chema Protection System",
-            href: "/products?product=chema-protection-system",
+            href: "/products?product=5",
           },
-          { label: "Geo Foam", href: "/products?product=geo-foam" },
-          { label: "Floor Raising", href: "/products?product=floor-raising" },
+          { label: "Geo Foam", href: "/products?product=6" },
+          { label: "Floor Raising", href: "/products?product=7" },
         ],
       },
       {
         label: "Outdoor Decoration",
-        href: "/products?product=outdoor-decoration",
+        href: "/products?product=1",
       },
       {
         label: "3D Models",
-        href: "/products?product=3d-models",
+        href: "/products?product=2",
       },
     ],
   },
@@ -103,33 +103,33 @@ const navItems: NavItem[] = [
     sublinks: [
       {
         label: "Thermal Insulation",
-        href: "/systems?system=thermal-insulation",
+        href: "/systems?system=1",
       },
-      { label: "Waterproofing", href: "/systems?system=waterproofing" },
-      { label: "Tile Adhesive", href: "/systems?system=tile-adhesive" },
+      { label: "Waterproofing", href: "/systems?system=2" },
+      { label: "Tile Adhesive", href: "/systems?system=3" },
       {
         label: "Insulation & construction",
         href: "#",
         sublinks: [
           {
             label: "Light-Weight Concrete",
-            href: "/systems?system=light-weight-concrete",
+            href: "/systems?system=4",
           },
           {
             label: "Chema Protection System",
-            href: "/systems?system=chema-protection-system",
+            href: "/systems?system=5",
           },
-          { label: "Geo Foam", href: "/systems?system=geo-foam" },
-          { label: "Floor Raising", href: "/systems?system=floor-raising" },
+          { label: "Geo Foam", href: "/systems?system=6" },
+          { label: "Floor Raising", href: "/systems?system=7" },
         ],
       },
       {
         label: "Outdoor Decoration",
-        href: "/systems?system=outdoor-decoration",
+        href: "/systems?system=1",
       },
       {
         label: "3D Models",
-        href: "/systems?system=3d-models",
+        href: "/systems?system=2",
       },
     ],
   },

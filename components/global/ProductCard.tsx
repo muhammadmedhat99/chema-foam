@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "./Button";
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -39,6 +39,7 @@ const formSchema = z.object({
 });
 
 export const ProductCard = ({ item }: ProductCardProps) => {
+  const [result, setResult] = useState<number | null>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -47,7 +48,7 @@ export const ProductCard = ({ item }: ProductCardProps) => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    setResult((values?.length * values?.width) / item?.coverage_rate);
   }
   return (
     <div className="group relative h-[386px] w-[273px] overflow-hidden border border-secondary">
@@ -100,7 +101,10 @@ export const ProductCard = ({ item }: ProductCardProps) => {
 
               <div className="my-3 flex flex-wrap justify-between gap-5">
                 {item?.places?.map((place: any) => (
-                  <div className="flex flex-col items-center gap-1.5">
+                  <div
+                    className="flex flex-col items-center gap-1.5"
+                    key={item?.id}
+                  >
                     <Image
                       src={place?.image}
                       alt={place?.title}
@@ -248,6 +252,14 @@ export const ProductCard = ({ item }: ProductCardProps) => {
                       </FormItem>
                     )}
                   />
+                  {result && (
+                    <div className="flex items-end gap-2">
+                      <span>=</span>
+                      <span className="rounded-sm border border-gray-200 px-5 py-1">
+                        {result}
+                      </span>
+                    </div>
+                  )}
                   <div className="flex h-16 flex-1 items-end gap-3">
                     <button
                       type="submit"
@@ -258,7 +270,10 @@ export const ProductCard = ({ item }: ProductCardProps) => {
                     <button
                       type="button"
                       className="rounded bg-primary px-10 py-3 font-medium text-white"
-                      onClick={() => form.reset({ length: 0, width: 0 })}
+                      onClick={() => {
+                        form.reset({ length: 0, width: 0 });
+                        setResult(null);
+                      }}
                     >
                       Reset
                     </button>

@@ -36,7 +36,6 @@ export const Slider = ({ data }: any) => {
         slidesPerView={1}
         spaceBetween={0}
         onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
         className="mt-[-100px]"
         navigation={{
           nextEl: ".custom-next",

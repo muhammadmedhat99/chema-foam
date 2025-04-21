@@ -20,6 +20,7 @@ export const Clients = ({ data, clients }: ClientsProps) => {
     id: client?.id,
     element: (
       <Image
+        key={client?.id}
         alt={client?.name}
         width={640}
         height={640}

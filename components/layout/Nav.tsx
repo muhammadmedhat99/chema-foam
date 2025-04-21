@@ -182,7 +182,7 @@ export const Navbar = () => {
                         <MenubarSubTrigger>{sublink?.label}</MenubarSubTrigger>
                         <MenubarSubContent>
                           {sublink?.sublinks?.map((singleLink) => (
-                            <MenubarItem>
+                            <MenubarItem key={`sub-link-${singleLink?.label}`}>
                               <Link href={singleLink?.href}>
                                 {singleLink?.label}
                               </Link>

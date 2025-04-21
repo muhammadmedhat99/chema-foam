@@ -22,7 +22,7 @@ export default async function Home({
       <Slider data={data?.header} />
       <div className="pb-40">
         <SearchBoxComponent />
-        <Categories />
+        <Categories className="relative z-10 mx-auto mt-5 flex max-w-7xl flex-wrap items-center justify-center gap-3 duration-300 lg:gap-6" />
       </div>
       <About data={data?.aboutUs} />
       <Applications data={data?.applications} />

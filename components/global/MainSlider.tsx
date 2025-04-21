@@ -63,7 +63,6 @@ export const MainSlider = ({
         slidesPerView={slidesPreview}
         spaceBetween={spaceBetweenSlides}
         onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
         loop={loop}
         centeredSlides={centeredSlides}
         wrapperClass={wrapperClassName}

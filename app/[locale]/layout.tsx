@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
+import { TanstackProvider } from "@/components/provider";
 
 const geistSans = localFont({
   src: "./fonts/Roboto-VariableFont_wdth,wght.ttf",
@@ -33,9 +34,11 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={`${geistSans.variable} antialiased`}>
         <NextIntlClientProvider>
-          <Header />
-          {children}
-          <Footer />
+          <TanstackProvider>
+            <Header />
+            {children}
+            <Footer />
+          </TanstackProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -14,7 +14,7 @@ export default async function page({
   const { locale } = params;
   const mainData = await fetchData(`page/Application/${locale}`, locale);
   const data = await fetchData(
-    `page/Application/show/${searchParams?.app}`,
+    `${searchParams?.app ? `page/Application/show/${searchParams?.app}` : `page/Application/${locale}`}`,
     locale,
   );
   const initialSelection = searchParams.app
@@ -30,7 +30,11 @@ export default async function page({
         ]}
       />
       <div className="mx-auto my-20 max-w-7xl px-2">
-        <AppComponent data={data} sidebarData={mainData?.sidebar} initialSelection={initialSelection}/>
+        <AppComponent
+          data={data}
+          sidebarData={mainData?.sidebar}
+          initialSelection={initialSelection}
+        />
       </div>
     </div>
   );

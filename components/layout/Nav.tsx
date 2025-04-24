@@ -3,7 +3,7 @@ import { NavItem } from "@/types";
 import { Link } from "@/i18n/navigation";
 import { usePathname } from "next/navigation";
 
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
 import {
@@ -22,128 +22,100 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
-const navItems: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  {
-    label: "Applications",
-    href: "/applications",
-    sublinks: [
-      {
-        label: "Thermal Insulation",
-        href: "/applications?app=1",
-      },
-      { label: "Waterproofing", href: "/applications?app=2" },
-      { label: "Tile Adhesive", href: "/applications?app=3" },
-      {
-        label: "Insulation & construction",
-        href: "#",
-        sublinks: [
-          {
-            label: "Light-Weight Concrete",
-            href: "/applications?app=4",
-          },
-          {
-            label: "Chema Protection System",
-            href: "/applications?app=5",
-          },
-          { label: "Geo Foam", href: "/applications?app=6" },
-          { label: "Floor Raising", href: "/applications?app=7" },
-        ],
-      },
-      {
-        label: "Outdoor Decoration",
-        href: "/applications?app=1",
-      },
-      {
-        label: "3D Models",
-        href: "/applications?app=2",
-      },
-    ],
-  },
-  {
-    label: "Products",
-    href: "/products",
-    sublinks: [
-      {
-        label: "Thermal Insulation",
-        href: "/products?product=1",
-      },
-      { label: "Waterproofing", href: "/products?product=2" },
-      { label: "Tile Adhesive", href: "/products?product=3" },
-      {
-        label: "Insulation & construction",
-        href: "#",
-        sublinks: [
-          {
-            label: "Light-Weight Concrete",
-            href: "/products?product=4",
-          },
-          {
-            label: "Chema Protection System",
-            href: "/products?product=5",
-          },
-          { label: "Geo Foam", href: "/products?product=6" },
-          { label: "Floor Raising", href: "/products?product=7" },
-        ],
-      },
-      {
-        label: "Outdoor Decoration",
-        href: "/products?product=1",
-      },
-      {
-        label: "3D Models",
-        href: "/products?product=2",
-      },
-    ],
-  },
-  {
-    label: "Systems",
-    href: "/systems",
-    sublinks: [
-      {
-        label: "Thermal Insulation",
-        href: "/systems?system=1",
-      },
-      { label: "Waterproofing", href: "/systems?system=2" },
-      { label: "Tile Adhesive", href: "/systems?system=3" },
-      {
-        label: "Insulation & construction",
-        href: "#",
-        sublinks: [
-          {
-            label: "Light-Weight Concrete",
-            href: "/systems?system=4",
-          },
-          {
-            label: "Chema Protection System",
-            href: "/systems?system=5",
-          },
-          { label: "Geo Foam", href: "/systems?system=6" },
-          { label: "Floor Raising", href: "/systems?system=7" },
-        ],
-      },
-      {
-        label: "Outdoor Decoration",
-        href: "/systems?system=1",
-      },
-      {
-        label: "3D Models",
-        href: "/systems?system=2",
-      },
-    ],
-  },
-  { label: "Videos", href: "/videos" },
-  { label: "Downloads", href: "/downloads" },
-  { label: "Contact Us", href: "/contact" },
-];
 
-// Update the Navbar component to use this hook
+import { useLocalizedData } from "@/utils/hooks";
+
+function mapEntriesToNav({
+  data,
+  base,
+  param,
+  entryKey,
+  labelKey = "title",
+  idKey = "id",
+}: {
+  data?: any[];
+  base: string;
+  param: string;
+  entryKey: "application" | "products" | "system";
+  labelKey?: string;
+  idKey?: string;
+}): NavItem[] {
+  if (!data) return [];
+
+  return data.flatMap((category: any) => {
+    const items = category[entryKey];
+
+    if (!items || items.length === 0) return [];
+
+    if (items.length === 1) {
+      const item = items[0];
+      return [
+        {
+          label: item[labelKey],
+          href: `/${base}?${param}=${item[idKey]}`,
+        },
+      ];
+    }
+
+    return [
+      {
+        label: category.categoryName || category.title,
+        href: "#",
+        sublinks: items.map((item: any) => ({
+          label: item[labelKey],
+          href: `/${base}?${param}=${item[idKey]}`,
+        })),
+      },
+    ];
+  });
+}
 export const Navbar = () => {
   const [activeSublink, setActiveSublink] = useState<string | null>(null);
 
   const pathname = usePathname();
 
+  const applications = useLocalizedData("Application");
+  const systems = useLocalizedData("Systems");
+  const products = useLocalizedData("Products");
+
+  const navItems: NavItem[] = [
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    {
+      label: "Applications",
+      href: "/applications",
+      sublinks: mapEntriesToNav({
+        data: applications?.data?.sidebar,
+        base: "applications",
+        param: "app",
+        entryKey: "application",
+      }),
+    },
+    {
+      label: "Products",
+      href: "/products",
+      sublinks: mapEntriesToNav({
+        data: products?.data?.sidebar,
+        base: "products",
+        param: "product",
+        entryKey: "products",
+        idKey: "product_id",
+      }),
+    },
+    {
+      label: "Systems",
+      href: "/systems",
+      sublinks: mapEntriesToNav({
+        data: systems?.data?.sidebar,
+        base: "systems",
+        param: "system",
+        entryKey: "system",
+      }),
+    },
+    { label: "Videos", href: "/videos" },
+    { label: "Downloads", href: "/downloads" },
+    { label: "Contact Us", href: "/contact" },
+  ];
   return (
     <>
       <div className="hidden items-center justify-center space-x-4 lg:flex">
@@ -210,6 +182,49 @@ export const ResponsiveNav = () => {
   const [activeSublink, setActiveSublink] = useState<string | null>(null);
 
   const pathname = usePathname();
+
+  const applications = useLocalizedData("Application");
+  const systems = useLocalizedData("Systems");
+  const products = useLocalizedData("Products");
+
+  const navItems: NavItem[] = [
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    {
+      label: "Applications",
+      href: "/applications",
+      sublinks: mapEntriesToNav({
+        data: applications?.data?.sidebar,
+        base: "applications",
+        param: "app",
+        entryKey: "application",
+      }),
+    },
+    {
+      label: "Products",
+      href: "/products",
+      sublinks: mapEntriesToNav({
+        data: products?.data?.sidebar,
+        base: "products",
+        param: "product",
+        entryKey: "products",
+        idKey: "product_id",
+      }),
+    },
+    {
+      label: "Systems",
+      href: "/systems",
+      sublinks: mapEntriesToNav({
+        data: systems?.data?.sidebar,
+        base: "systems",
+        param: "system",
+        entryKey: "system",
+      }),
+    },
+    { label: "Videos", href: "/videos" },
+    { label: "Downloads", href: "/downloads" },
+    { label: "Contact Us", href: "/contact" },
+  ];
   return (
     <div className="flex flex-col gap-2 lg:hidden">
       {navItems.map((item) =>

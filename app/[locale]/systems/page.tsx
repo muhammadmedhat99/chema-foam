@@ -12,7 +12,7 @@ export default async function page({
   const { locale } = params;
   const mainData = await fetchData(`page/Systems/${locale}`, locale);
   const data = await fetchData(
-    `page/Systems/show/${searchParams?.system}`,
+    `${searchParams?.system ? `page/Systems/show/${searchParams?.system}` : `page/Systems/${locale}`}`,
     locale,
   );
   const initialSelection = searchParams.system

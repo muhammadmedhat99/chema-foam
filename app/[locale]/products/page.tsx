@@ -16,7 +16,7 @@ export default async function page({
   const { locale } = params;
   const data = await fetchData(`page/Products/${locale}`, locale);
   const mainData = await fetchData(
-    `page/Product/show/${searchParams?.product}`,
+    `${searchParams?.product ? `page/Product/show/${searchParams?.product}` : `page/Products/${locale}`}`,
     locale,
   );
   return (

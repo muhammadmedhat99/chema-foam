@@ -20,8 +20,8 @@ import { Textarea } from "../ui/textarea";
 import { toast } from "sonner";
 
 interface IFormInput {
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   message: string;
   company: string;
   email: string;
@@ -35,8 +35,8 @@ interface IFormInput {
 
 const schema = yup
   .object({
-    firstName: yup.string().required("This Input Is Required"),
-    lastName: yup.string().required("This Input Is Required"),
+    first_name: yup.string().required("This Input Is Required"),
+    last_name: yup.string().required("This Input Is Required"),
     message: yup.string().required("This Input Is Required"),
     company: yup.string().required("This Input Is Required"),
     email: yup.string().required("This Input Is Required"),
@@ -79,8 +79,8 @@ export const ContactForm = () => {
 
   const handleReset = () => {
     form.reset({
-      firstName: "",
-      lastName: "",
+      first_name: "",
+      last_name: "",
       message: "",
       company: "",
       email: "",
@@ -143,7 +143,7 @@ export const ContactForm = () => {
           />
           <FormField
             control={form.control}
-            name="firstName"
+            name="first_name"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-xl text-primary">
@@ -162,7 +162,7 @@ export const ContactForm = () => {
           />
           <FormField
             control={form.control}
-            name="lastName"
+            name="last_name"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-xl text-primary">

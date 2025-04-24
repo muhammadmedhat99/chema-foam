@@ -7,6 +7,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { TanstackProvider } from "@/components/provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = localFont({
   src: "./fonts/Roboto-VariableFont_wdth,wght.ttf",
@@ -35,6 +36,7 @@ export default async function LocaleLayout({
       <body className={`${geistSans.variable} antialiased`}>
         <NextIntlClientProvider>
           <TanstackProvider>
+            <Toaster position="top-center" richColors />
             <Header />
             {children}
             <Footer />

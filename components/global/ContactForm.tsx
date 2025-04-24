@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
-
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -16,6 +17,7 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
+import { toast } from "sonner";
 
 interface IFormInput {
   firstName: string;
@@ -25,8 +27,8 @@ interface IFormInput {
   email: string;
   phone: string;
   country: string;
-  streetNumber?: string | undefined;
-  postalCode?: string | undefined;
+  street: string;
+  postal?: string | undefined;
   city?: string | undefined;
   fax?: string | undefined;
 }
@@ -40,15 +42,40 @@ const schema = yup
     email: yup.string().required("This Input Is Required"),
     phone: yup.string().required("This Input Is Required"),
     country: yup.string().required("This Input Is Required"),
-    streetNumber: yup.string().notRequired().nonNullable(),
-    postalCode: yup.string().notRequired().nonNullable(),
+    street: yup.string().required("This Input Is Required"),
+    postal: yup.string().notRequired().nonNullable(),
     city: yup.string().notRequired().nonNullable(),
     fax: yup.string().notRequired().nonNullable(),
   })
   .required();
+
+const submitContactForm = async (formData: IFormInput) => {
+  const response = await axios.post(
+    "https://web.chema-foam.com/api/ContactUs/forms/Products-solutions",
+    formData,
+  );
+  return response.data;
+};
+
 export const ContactForm = () => {
   const form = useForm<IFormInput>({ resolver: yupResolver(schema) });
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+
+  const mutation = useMutation({
+    mutationFn: submitContactForm,
+    onSuccess: () => {
+      console.log("Form submitted successfully");
+      toast.success("Form submitted successfully");
+      handleReset();
+    },
+    onError: (error) => {
+      toast.error(error.message as string);
+      console.error("Form submission failed:", error);
+    },
+  });
+
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    mutation.mutate(data);
+  };
 
   const handleReset = () => {
     form.reset({
@@ -59,8 +86,8 @@ export const ContactForm = () => {
       email: "",
       phone: "",
       country: "",
-      streetNumber: "",
-      postalCode: "",
+      street: "",
+      postal: "",
       city: "",
       fax: "",
     });
@@ -154,7 +181,7 @@ export const ContactForm = () => {
           />
           <FormField
             control={form.control}
-            name="streetNumber"
+            name="street"
             render={({ field }) => (
               <FormItem className="lg:col-span-2">
                 <FormLabel className="text-xl text-primary">
@@ -172,7 +199,7 @@ export const ContactForm = () => {
         </div>
         <FormField
           control={form.control}
-          name="postalCode"
+          name="postal"
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-xl text-primary">

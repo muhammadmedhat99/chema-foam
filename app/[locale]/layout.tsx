@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@/styles/globals.css";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
@@ -37,9 +35,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <TanstackProvider>
             <Toaster position="top-center" richColors />
-            <Header />
             {children}
-            <Footer />
           </TanstackProvider>
         </NextIntlClientProvider>
       </body>

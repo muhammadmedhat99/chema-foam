@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/global/PageHeader";
 import { ProductCard } from "@/components/global/ProductCard";
 import { SectionWrapper } from "@/components/global/SectionWrapper";
 import { FadeIn } from "@/components/global/FadeIn";
+import { useTranslations } from "next-intl";
 
 type ProductsProps = { data: any };
 
@@ -13,11 +14,16 @@ export const Products = ({ data }: ProductsProps) => {
     id: item?.id,
     element: <ProductCard item={item} />,
   }));
+  const t = useTranslations();
   return (
     <div className="bg-secondary/20">
       <SectionWrapper>
         <FadeIn duration={0.5}>
-          <PageHeader title="Products" link="All Products" href="/products" />
+          <PageHeader
+            title={t("Header.products")}
+            link={t("Home.all_products")}
+            href="/products"
+          />
         </FadeIn>
         <MainSlider
           sliderElements={slider_elements}

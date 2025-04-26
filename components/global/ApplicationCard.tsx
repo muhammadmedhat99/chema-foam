@@ -2,14 +2,17 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "./Button";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useTranslations } from "next-intl";
 
 type ApplicationCardProps = {
+  id: string;
   title: string;
   description: string;
   image: string;
 };
 
 export const ApplicationCard = ({
+  id = "1",
   title = "Contrary to popular belief Many desktop publishing packages and web page",
   description = `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.There are many variations of passages of Lorem Ipsum
           available, but the majority have suffered alteration in some form, by
@@ -17,6 +20,7 @@ export const ApplicationCard = ({
           believable.`,
   image = "/imgs/applications/1.jpg",
 }: ApplicationCardProps) => {
+  const t = useTranslations("Home");
   return (
     <div className="group relative h-[386px] w-[273px] overflow-hidden border border-secondary">
       <Image
@@ -35,12 +39,12 @@ export const ApplicationCard = ({
           {description}
         </p>
         <Button
-          text="Who We Are"
+          text={t("more_details")}
           isLink={true}
-          href="/about"
+          href={`/applications?app=${id}`}
           className="mx-auto hidden h-16 w-[220px] text-sm group-hover:flex"
         >
-          <FaArrowRightLong />
+          <FaArrowRightLong className="rtl:-scale-x-100" />
         </Button>
       </div>
     </div>

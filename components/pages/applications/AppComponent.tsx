@@ -11,6 +11,7 @@ import {
   BiBuildings,
 } from "react-icons/bi";
 import { ProductCard } from "@/components/global/ProductCard";
+import { useTranslations } from "next-intl";
 
 type Props = { data: any; sidebarData: any; initialSelection?: string[] };
 
@@ -20,10 +21,11 @@ export const AppComponent = ({
   initialSelection,
 }: Props) => {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const t = useTranslations("Applications");
   return (
     <div className="grid gap-3 lg:grid-cols-4 lg:gap-9">
       <Sidebar
-        filterTitle="Applications"
+        filterTitle={t("applications")}
         filters={sidebarData}
         defaultName="categoryName"
         defaultCat="application"
@@ -108,7 +110,7 @@ export const AppComponent = ({
         <div className="space-y-5">
           {/* Features Accordion */}
           <CustomAccordion
-            title="Features"
+            title={t("features")}
             icon={<BiHomeAlt size={36} />}
             content={
               <div className="space-y-4">
@@ -135,7 +137,7 @@ export const AppComponent = ({
 
           {/* Benefits Accordion */}
           <CustomAccordion
-            title="Benefits"
+            title={t("benefits")}
             icon={<BiStar size={36} />}
             content={
               <div className="space-y-4">
@@ -162,7 +164,7 @@ export const AppComponent = ({
 
           {/* Application Places Accordion */}
           <CustomAccordion
-            title="Application Places"
+            title={t("places")}
             icon={<BiBuildings size={36} />}
             content={
               <>

@@ -27,6 +27,11 @@
     bottom: unset !important;
 }
 
+html[dir="rtl"] .custom-pagination {
+    left: unset;
+    right: 120px;
+}
+
 .swiper-pagination-bullet {
     width: 10px;
     height: 10px;

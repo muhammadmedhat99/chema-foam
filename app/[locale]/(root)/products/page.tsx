@@ -5,6 +5,7 @@ import { BreadcrumbComponent } from "@/components/global/Breadcrumb";
 import { Sidebar } from "@/components/pages/applications/Sidebar";
 import { ProductDetails } from "@/components/pages/products/ProductDetails";
 import fetchData from "@/utils/api";
+import { getTranslations } from "next-intl/server";
 
 export default async function page({
   params,
@@ -19,13 +20,14 @@ export default async function page({
     `${searchParams?.product ? `page/Product/show/${searchParams?.product}` : `page/Products/${locale}`}`,
     locale,
   );
+  const t = await getTranslations();
   return (
     <div>
       <BreadcrumbComponent
-        pageTitle={mainData?.product?.title || "Products"}
+        pageTitle={mainData?.product?.title || t("Header.products")}
         pages={[
-          { title: "Home", href: "/" },
-          { title: mainData?.product?.title || "Products" },
+          { title: t("Header.home"), href: "/" },
+          { title: mainData?.product?.title || t("Header.products") },
         ]}
       />
       <div className="mx-auto my-20 max-w-7xl px-2">

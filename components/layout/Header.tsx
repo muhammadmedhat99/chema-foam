@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { MenuIcon, SearchIcon } from "lucide-react";
 import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 
 export const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -49,10 +49,14 @@ export const Header = () => {
   return (
     <div
       className={`sticky left-0 right-0 z-[99] flex h-[100px] duration-300 lg:gap-9 ${isSticky ? "top-0" : "lg:top-10"}`}
+      dir="ltr"
     >
-      <div className="flex h-full w-[325px] items-center justify-end bg-primary/75 pr-[37px]">
+      <Link
+        href="/"
+        className="flex h-full w-[325px] items-center justify-end bg-primary/75 pe-[37px]"
+      >
         <Image src="/imgs/logo.svg" alt="logo" width={169} height={55} />
-      </div>
+      </Link>
       <div className="flex h-full flex-1 items-center justify-between bg-primary/75 px-2 lg:px-[37px]">
         <Navbar />
 

@@ -2,20 +2,16 @@ import React from "react";
 
 import { PageHeader } from "@/components/global/PageHeader";
 import { SectionWrapper } from "@/components/global/SectionWrapper";
-import {
-  BuildingIcon,
-  FactorIcon,
-  GearIcon,
-  HouseIcon,
-  TourIcon,
-} from "@/components/icons";
+
 import { MainSlider } from "@/components/global/MainSlider";
 import Image from "next/image";
 import { FadeIn } from "@/components/global/FadeIn";
+import { useTranslations } from "next-intl";
 
 type ClientsProps = { data: any; clients: any };
 
 export const Clients = ({ data, clients }: ClientsProps) => {
+  const t = useTranslations("Home");
   const slider_elements = clients?.map((client: any) => ({
     id: client?.id,
     element: (
@@ -54,7 +50,7 @@ export const Clients = ({ data, clients }: ClientsProps) => {
                 {data[0]?.companies_number}
               </span>
               <span className="text-center text-[14px] text-svg duration-300 group-hover:text-[28px]">
-                Total Chema Foam Projects
+                {t("chema_projects")}
               </span>
             </div>
 
@@ -71,7 +67,7 @@ export const Clients = ({ data, clients }: ClientsProps) => {
                 {data[0]?.house_number}
               </span>
               <span className="text-center text-[14px] text-svg duration-300 group-hover:text-[28px]">
-                Total Chema Foam Projects
+                {t("chema_projects")}
               </span>
             </div>
 
@@ -88,7 +84,7 @@ export const Clients = ({ data, clients }: ClientsProps) => {
                 {data[0]?.national_number}
               </span>
               <span className="text-center text-[14px] text-svg duration-300 group-hover:text-[28px]">
-                Total Chema Foam national
+                {t("chema_national")}
               </span>
             </div>
 
@@ -105,7 +101,7 @@ export const Clients = ({ data, clients }: ClientsProps) => {
                 {data[0]?.factories_number}
               </span>
               <span className="text-center text-[14px] text-svg duration-300 group-hover:text-[28px]">
-                Total Chema Foam factories
+                {t("chema_factories")}
               </span>
             </div>
 
@@ -122,14 +118,14 @@ export const Clients = ({ data, clients }: ClientsProps) => {
                 {data[0]?.total_projects}
               </span>
               <span className="text-center text-[14px] text-svg duration-300 group-hover:text-[28px]">
-                Total Chema Foam Projects
+                {t("chema_projects")}
               </span>
             </div>
           </div>
         </FadeIn>
 
         <FadeIn>
-          <PageHeader title="Our Clients" />
+          <PageHeader title={t("our_clients")} />
         </FadeIn>
       </SectionWrapper>
       <div className="mx-auto bg-white">

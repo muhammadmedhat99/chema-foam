@@ -1,6 +1,71 @@
 {
-  "Common": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+  "Header": {
+    "home": "Home",
+    "about": "About Us",
+    "applications": "Applications",
+    "products": "Products",
+    "systems": "Systems",
+    "videos": "Videos",
+    "downloads": "Downloads",
+    "contact": "Contact Us"
+  },
+  "Home": {
+    "who_we_are": "Who We Are ?",
+    "how_can_we_help": "How Can We Help You ?",
+    "search_text": "Find Products, Application, Systems and Solutions.....",
+    "awards":"Awards",
+    "all_applications":"All Applications",
+    "more_details":"More Details",
+    "all_products":"All Products",
+    "view_product":"view_product",
+    "smart_systems":"Smart Solution System",
+    "all_systems":"All Systems",
+    "chema_projects":"Total Chema Foam Projects",
+    "chema_factories":"Total Chema Foam Factories",
+    "chema_national":"Total Chema Foam National",
+    "our_clients":"Our Clients",
+    "build_your_dream":"BuildYourDream",
+    "faq":"Frequently asked questions"
+  },
+  "Footer":{
+    "need_help":"Need Help?",
+    "map_location":"Map Location",
+    "follow":"Follow Us",
+    "factory":"Factory",
+    "factory_location":"10th of Ramadan - B4 Industrial Zone",
+    "office":"Office",
+    "office_location":"11 Obour Buildings - Salah Salem - Nasr City - Cairo"
+
+  },
+  "About":{
+    "story":"Chema Foam Story",
+    "message":"Our Message",
+    "goals":"Our Strategy Goals"
+  },
+  "Applications":{
+    "applications":"Applications",
+    "features":"Features",
+    "benefits":"Benefits",
+    "places":"Application Places"
+  },
+  "Products":{
+    "products":"Products",
+    "description":"The Description",
+    "technical_characteristics":"Technical Characteristics",
+    "application_places":"Application Places",
+    "mixing_instructions":"Mixing Instructions",
+    "installation_steps":"Install Steps",
+    "related":"Other Related Products.",
+    "watching_video":"Watching Video",
+    "video":"Video",
+    "quantity_calculation":"Quantity Calculation",
+    "length":"Length",
+    "width":"Width",
+    "unit":"Unit",
+    "submit":"Submit",
+    "reset":"Reset",
+    "download_files":"Download Files",
+    "step":"Step",
+    "important_notes":"Important Notes"
   }
 }

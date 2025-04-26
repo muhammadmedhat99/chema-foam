@@ -3,6 +3,7 @@ import React from "react";
 import { BreadcrumbComponent } from "@/components/global/Breadcrumb";
 import fetchData from "@/utils/api";
 import { AppComponent } from "@/components/pages/applications/AppComponent";
+import { getTranslations } from "next-intl/server";
 
 export default async function page({
   params,
@@ -20,13 +21,14 @@ export default async function page({
   const initialSelection = searchParams.app
     ? [searchParams.app.toString()]
     : [];
+  const t = await getTranslations("Header");
   return (
     <div>
       <BreadcrumbComponent
-        pageTitle={mainData?.application?.title || "Applications"}
+        pageTitle={mainData?.application?.title || t("applications")}
         pages={[
-          { title: "Home", href: "/" },
-          { title: mainData?.application?.title || "Applications" },
+          { title: t("home"), href: "/" },
+          { title: mainData?.application?.title || t("applications") },
         ]}
       />
       <div className="mx-auto my-20 max-w-7xl px-2">

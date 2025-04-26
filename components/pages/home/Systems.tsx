@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Button } from "@/components/global/Button";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FadeIn } from "@/components/global/FadeIn";
+import { useTranslations } from "next-intl";
 
 type SystemsProps = { data: any };
 
@@ -46,6 +47,7 @@ const slider_elements = [
   },
 ];
 export const Systems = ({ data }: SystemsProps) => {
+  const t = useTranslations("Home");
   const slider_elements = data?.map((item: any) => ({
     id: item?.id,
     element: (
@@ -65,12 +67,12 @@ export const Systems = ({ data }: SystemsProps) => {
             {item?.description}
           </p>
           <Button
-            text="Who We Are"
+            text={t("more_details")}
             isLink={true}
-            href="/about"
+            href={`/systems?system=${item?.id}`}
             className="h-16 w-[235px] text-sm"
           >
-            <FaArrowRightLong />
+            <FaArrowRightLong className="rtl:-scale-x-100" />
           </Button>
         </div>
       </div>
@@ -80,8 +82,8 @@ export const Systems = ({ data }: SystemsProps) => {
     <SectionWrapper className="max-w-7xl">
       <FadeIn delay={0.5}>
         <PageHeader
-          title="Smart Solution System"
-          link="All Systems"
+          title={t("smart_systems")}
+          link={t("all_systems")}
           href="/systems"
         />
       </FadeIn>

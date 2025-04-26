@@ -4,6 +4,7 @@ import { BiSearch } from "react-icons/bi";
 import { useDebounce } from "use-debounce";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 type SearchResultItem = {
   id: number;
@@ -21,6 +22,7 @@ type SearchResults = {
 type SearchBoxProps = {};
 
 export const SearchBoxComponent = (props: SearchBoxProps) => {
+  const t = useTranslations("Home");
   const fetchSearchResults = async (query: string): Promise<SearchResults> => {
     if (!query.trim()) return { applications: [], products: [], systems: [] };
 
@@ -72,13 +74,13 @@ export const SearchBoxComponent = (props: SearchBoxProps) => {
   return (
     <div className="relative z-[11] mx-auto mt-5 flex max-w-3xl flex-col items-center justify-center gap-6 bg-primary/85 px-2 py-2 backdrop-blur-sm lg:-mt-24 lg:px-20 lg:py-20">
       <h2 className="text-lg font-bold text-white lg:text-4xl">
-        How can we help you?
+        {t("how_can_we_help")}
       </h2>
       <div className="relative w-full">
         <input
           type="text"
           className="w-full bg-paragraph px-4 py-5 text-xs shadow-main outline-none placeholder:text-svg lg:text-base"
-          placeholder="Find Products, Application, Systems and Solutions....."
+          placeholder={t("search_text")}
           value={text}
           onChange={(e) => {
             setText(e.target.value);

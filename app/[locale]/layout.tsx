@@ -30,7 +30,7 @@ export default async function LocaleLayout({
     notFound();
   }
   return (
-    <html lang={locale}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body className={`${geistSans.variable} antialiased`}>
         <NextIntlClientProvider>
           <TanstackProvider>

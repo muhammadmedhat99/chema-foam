@@ -22,7 +22,7 @@ export const PageHeader = ({
         <h2
           className={clsx(
             "relative pb-5 text-2xl font-bold text-primary before:absolute before:bottom-0 before:h-1 before:w-full before:bg-secondary lg:text-5xl",
-            link && "ml-auto",
+            link && "ltr:ml-auto rtl:mr-auto",
           )}
         >
           {title}
@@ -31,10 +31,10 @@ export const PageHeader = ({
         {link && href && (
           <Link
             href={href}
-            className="ml-auto flex items-center text-xs font-semibold uppercase text-svg lg:gap-2 lg:text-xl"
+            className="flex items-center text-xs font-semibold uppercase text-svg lg:gap-2 lg:text-xl ltr:ml-auto rtl:mr-auto"
           >
             <span>{link}</span>
-            <RiArrowDropRightFill size={30} />
+            <RiArrowDropRightFill size={30} className="rtl:-scale-x-100" />
           </Link>
         )}
       </div>

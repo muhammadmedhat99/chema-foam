@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Autoplay, Navigation, Pagination } from "swiper/modules";
 import Image from "next/image";
 import { Button } from "@/components/global/Button";
-import { FaArrowRightLong } from "react-icons/fa6";
+import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -12,7 +12,10 @@ import "swiper/css/scrollbar";
 import { IoIosArrowBack, IoIosArrowForward, IoIosPlay } from "react-icons/io";
 import { IoPauseOutline } from "react-icons/io5";
 import { useRef, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 export const Slider = ({ data }: any) => {
+  const t = useTranslations("Home");
+  const locale = useLocale();
   const [isPlaying, setIsPlaying] = useState(true);
 
   const swiperRef = useRef<any>(null);
@@ -63,24 +66,24 @@ export const Slider = ({ data }: any) => {
                 <h1 className="text-6xl font-bold text-white">{item?.title}</h1>
                 <p className="text-xl text-paragraph">{item?.description}</p>
                 <Button
-                  text="Who We Are"
+                  text={t("who_we_are")}
                   isLink={true}
                   href="/about"
                   className="h-16 w-[262px]"
                 >
-                  <FaArrowRightLong />
+                  <FaArrowRightLong className="rtl:-scale-x-100" />
                 </Button>
               </div>
             </div>
           </SwiperSlide>
         ))}
 
-        <div className="absolute left-1/2 right-1/2 top-[90%] z-[12] flex items-center justify-center gap-3 lg:left-[120px] lg:right-[unset] lg:top-[72%]">
+        <div className="absolute left-1/2 right-1/2 top-[90%] z-[12] flex items-center justify-center gap-3 lg:top-[72%] lg:ltr:left-[120px] lg:ltr:right-[unset] lg:rtl:left-[unset] lg:rtl:right-[120px]">
           <div
-            className="cursor-pointer bg-paragraph p-4 text-lg text-svg"
+            className={`cursor-pointer bg-paragraph p-4 text-lg text-svg`}
             onClick={handlePrev}
           >
-            <IoIosArrowBack width={20} />
+            <IoIosArrowBack width={20} className="rtl:-scale-x-100" />
           </div>
           <div
             className="cursor-pointer bg-paragraph p-4 text-xl text-svg"
@@ -96,10 +99,10 @@ export const Slider = ({ data }: any) => {
           </div>
 
           <div
-            className="cursor-pointer bg-paragraph p-4 text-lg text-svg"
+            className={`cursor-pointer bg-paragraph p-4 text-lg text-svg`}
             onClick={handleNext}
           >
-            <IoIosArrowForward width={20} />
+            <IoIosArrowForward width={20} className="rtl:-scale-x-100" />
           </div>
         </div>
         <div className="custom-pagination hidden lg:flex"></div>
@@ -109,7 +112,7 @@ export const Slider = ({ data }: any) => {
         alt="Chema Logo"
         width={146}
         height={146}
-        className="absolute bottom-20 right-20 z-10 hidden lg:block"
+        className={`absolute bottom-20 z-10 hidden lg:block ${locale === "ar" ? "left-20" : "right-20"}`}
       />
     </div>
   );

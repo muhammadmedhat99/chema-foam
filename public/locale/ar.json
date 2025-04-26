@@ -1,6 +1,70 @@
 {
-  "Common": {
-    "title": "مرحبا بك",
-    "about": "اذهب الي صفحة اخري"
+  "Header": {
+    "home": "الرئيسية",
+    "about": "عن الشركة",
+    "applications": "التطبيقات",
+    "products": "المنتجات",
+    "systems": "الانظمه",
+    "videos": "الفيديوهات",
+    "downloads": "النشرات الفنيه",
+    "contact": "تواصل معنا"
+  },
+  "Home": {
+    "who_we_are": "من نحن؟",
+    "how_can_we_help": "كيف يمكننا مساعدتك ؟",
+    "search_text": "إبحث عن منتج او تطبيق....",
+    "awards":"الجوائز",
+    "all_applications":"كل التطبيقات",
+    "more_details":"تفاصيل أكثر",
+    "all_products":"كل المنتجات",
+    "view_product":"عرض المنتج",
+    "smart_systems":"نظام الحلول الذكيه",
+    "all_systems":"مشاهدة كل الانظمه",
+    "chema_projects":"جميع المشروعات التي ساهمت بها كيما فوم",
+    "chema_factories":"جميع الصناعات التي دخلت فيها كيما فوم",
+    "chema_national":"جميع الجنسيات التي شاركت معها كيما فوم",
+    "our_clients":"عملائنا",
+    "build_your_dream":"إبني حلمك",
+    "faq":"إجابات الأسئلة المتكررة"
+  },
+  "Footer":{
+    "need_help":"تحتاج مساعدة؟",
+    "map_location":"تواجدنا على الخريطة",
+    "follow_us":"تابعنا",
+    "factory":"المصنع",
+    "factory_location":"المنطقة الصناعية ب4، مدينة العاشر من رمضان، الشرقية، مصر.",
+    "office":"المكتب",
+    "office_location":"11 عمارات العبور - صلاح سالم، مدينة نصر، القاهرة، مصر."
+  },
+  "About":{
+    "story":"تاريخ كيما فوم",
+    "message":"رسالتنا",
+    "goals":"الأهداف الإستراتيجيه"
+  },
+  "Applications":{
+    "applications":"التطبيقات",
+    "features":"المميزات",
+    "benefits":"الفوائد",
+    "places":"آماكن التطبيق"
+  },
+  "Products":{
+    "products":"المنتجات",
+    "description":"الوصف الخاص بالمنتج",
+    "technical_characteristics":"الخصائص الفنية",
+    "application_places":"أماكن تطبيق المنتج",
+    "mixing_instructions":"نسب الخلط والتحضير للإستخدام",
+    "installation_steps":"طريقة الإستخدام والتطبيق",
+    "related":"منتجات أخرى مشابهة في الإستخدام.",
+    "watching_video":"مشاهدة الفيديو",
+    "video":"فيديو",
+    "quantity_calculation":"حساب الكمية",
+    "length":"الطول",
+    "width":"العرض",
+    "unit":"وحدة القياس",
+    "submit":"إرسال",
+    "reset":"إعادة تعيين",
+    "download_files":"تحميل الملفات",
+    "step":"خطوة",
+    "important_notes":"ملاحظات مهمة"
   }
 }

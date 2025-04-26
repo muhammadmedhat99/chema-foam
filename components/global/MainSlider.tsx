@@ -89,14 +89,14 @@ export const MainSlider = ({
               className="cursor-pointer bg-paragraph p-4 text-lg text-svg"
               onClick={handlePrev}
             >
-              <IoIosArrowBack width={20} />
+              <IoIosArrowBack className="rtl:-scale-x-100" width={20} />
             </div>
 
             <div
               className="cursor-pointer bg-paragraph p-4 text-lg text-svg"
               onClick={handleNext}
             >
-              <IoIosArrowForward width={20} />
+              <IoIosArrowForward className="rtl:-scale-x-100" width={20} />
             </div>
           </div>
         )}

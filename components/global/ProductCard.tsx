@@ -24,6 +24,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 type ProductCardProps = { item: any };
 
 const formSchema = z.object({
@@ -50,6 +51,7 @@ export const ProductCard = ({ item }: ProductCardProps) => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     setResult((values?.length * values?.width) / item?.coverage_rate);
   }
+  const t = useTranslations("Home");
   return (
     <div className="group relative h-[386px] w-[273px] overflow-hidden border border-secondary">
       <Image
@@ -119,12 +121,12 @@ export const ProductCard = ({ item }: ProductCardProps) => {
                 ))}
               </div>
               <Button
-                text="View Product"
+                text={t("view_product")}
                 isLink={true}
-                href="/product"
+                href={`/products?product=${item?.id}`}
                 className="h-16 w-[200px] overflow-hidden text-sm"
               >
-                <FaArrowRightLong />
+                <FaArrowRightLong className="rtl:-scale-x-100" />
               </Button>
             </div>
           </DialogContent>
@@ -330,12 +332,12 @@ export const ProductCard = ({ item }: ProductCardProps) => {
         />
 
         <Button
-          text="View Product"
+          text={t("view_product")}
           isLink={true}
-          href="/product"
+          href={`/products?product=${item?.id}`}
           className="mx-auto h-16 w-[200px] overflow-hidden text-sm opacity-0 group-hover:opacity-100"
         >
-          <FaArrowRightLong />
+          <FaArrowRightLong className="rtl:-scale-x-100" />
         </Button>
       </div>
 
@@ -347,6 +349,8 @@ export const ProductCard = ({ item }: ProductCardProps) => {
 };
 
 export const ProductEmptyCard = ({ item }: ProductCardProps) => {
+  const t = useTranslations("Home");
+
   return (
     <div className="relative flex w-full flex-col gap-1.5 border border-secondary">
       <Image

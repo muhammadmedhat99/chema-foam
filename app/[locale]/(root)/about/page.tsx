@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Briefcase, MedalIcon } from "lucide-react";
 import { BiMessageSquareDots } from "react-icons/bi";
 import fetchData from "@/utils/api";
+import { getTranslations } from "next-intl/server";
 
 export default async function page({
   params,
@@ -15,11 +16,15 @@ export default async function page({
 }) {
   const { locale } = params;
   const data = await fetchData(`page/AboutUs/${locale}`, locale);
+  const t = await getTranslations();
   return (
     <div>
       <BreadcrumbComponent
         pageTitle={data?.whoWe[0]?.title}
-        pages={[{ title: "Home", href: "/" }, { title: "About Us" }]}
+        pages={[
+          { title: t("Header.home"), href: "/" },
+          { title: t("Header.about") },
+        ]}
       />
 
       <h3 className="relative z-50 mx-3 -mt-[54px] mb-16 min-h-[108px] max-w-[582px] bg-[#1F3566D9] px-3 py-7 text-center text-2xl text-white lg:mx-auto lg:px-32 lg:text-5xl">
@@ -48,7 +53,7 @@ export default async function page({
       </div>
 
       <CustomAccordion
-        title="Chema Foam Story"
+        title={t("About.story")}
         icon={<Briefcase size={36} />}
         content={
           <>
@@ -75,7 +80,7 @@ export default async function page({
         }
       />
       <CustomAccordion
-        title="Our Message"
+        title={t("About.message")}
         icon={<BiMessageSquareDots size={36} />}
         content={
           <>
@@ -97,7 +102,7 @@ export default async function page({
         }
       />
       <CustomAccordion
-        title="Our Strategic Goals"
+        title={t("About.goals")}
         icon={<MedalIcon size={36} />}
         content={
           <>

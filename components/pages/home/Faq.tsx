@@ -9,13 +9,15 @@ import {
 } from "@/components/ui/accordion";
 import { ChevronDown } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 type Props = { data: any };
 
 export const Faq = ({ data }: Props) => {
+  const t = useTranslations("Home");
   return (
     <div className="mx-auto max-w-7xl">
       <SectionWrapper>
-        <PageHeader title="Frequently asked questions" />
+        <PageHeader title={t("faq")} />
         <Accordion type="single" collapsible className="py-10">
           {data?.map((item: any) => (
             <AccordionItem

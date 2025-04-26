@@ -36,6 +36,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 type ProductDetailsProps = {
   data: any;
   productData: any;
@@ -69,10 +70,11 @@ export const ProductDetails = ({
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
   }
+  const t = useTranslations("Products");
   return (
     <>
       <Sidebar
-        filterTitle="Products"
+        filterTitle={t("products")}
         filters={data?.sidebar}
         selectedIds={selectedIds}
         setSelectedIds={setSelectedIds}
@@ -101,9 +103,9 @@ export const ProductDetails = ({
                   {productData?.coverage_rate_unite}
                 </span>
               </h6>
-              <p className="font-semibold text-secondary">
+              {/* <p className="font-semibold text-secondary">
                 Two layers individual rate
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
@@ -112,13 +114,13 @@ export const ProductDetails = ({
             <DialogTrigger asChild>
               <button className="flex grow items-center justify-center gap-2 bg-paragraph px-5 py-3.5 font-bold text-secGray">
                 <VideoIcon width={24} height={18} className="fill-secGray" />
-                Watching Video
+                {t("watching_video")}
               </button>
             </DialogTrigger>
             <DialogContent className="max-h-[320px] overflow-y-auto sm:max-h-[450px] sm:max-w-[825px] md:max-h-[500px] xl:max-h-[540px]">
               <DialogHeader>
                 <DialogTitle className="text-center">
-                  {productData?.title} Video
+                  {productData?.title} {t("video")}
                 </DialogTitle>
               </DialogHeader>
               <div className="">
@@ -142,7 +144,7 @@ export const ProductDetails = ({
                   height={18}
                   className="fill-secGray"
                 />
-                Quantity Calculation
+                {t("quantity_calculation")}
               </button>
             </DialogTrigger>
             <DialogContent className="max-h-[320px] overflow-y-auto sm:max-h-[450px] sm:max-w-[825px] md:max-h-[500px] xl:max-h-[540px]">
@@ -183,7 +185,8 @@ export const ProductDetails = ({
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>
-                            Length <span className="text-red-600">*</span>
+                            {t("length")}{" "}
+                            <span className="text-red-600">*</span>
                           </FormLabel>
                           <FormControl>
                             <Input
@@ -206,7 +209,7 @@ export const ProductDetails = ({
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>
-                            Width <span className="text-red-600">*</span>
+                            {t("width")} <span className="text-red-600">*</span>
                           </FormLabel>
                           <FormControl>
                             <Input
@@ -228,7 +231,7 @@ export const ProductDetails = ({
                       name="unit"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Unit</FormLabel>
+                          <FormLabel>{t("unit")}</FormLabel>
                           <FormControl>
                             <Input
                               disabled
@@ -244,14 +247,14 @@ export const ProductDetails = ({
                         type="submit"
                         className="rounded bg-secondary px-10 py-3 font-medium text-white"
                       >
-                        Submit
+                        {t("submit")}
                       </button>
                       <button
                         type="button"
                         className="rounded bg-primary px-10 py-3 font-medium text-white"
                         onClick={() => form.reset({ length: 0, width: 0 })}
                       >
-                        Reset
+                        {t("reset")}
                       </button>
                     </div>
                   </form>
@@ -264,7 +267,7 @@ export const ProductDetails = ({
             <DialogTrigger asChild>
               <button className="flex grow items-center justify-center gap-2 bg-paragraph px-5 py-3.5 font-bold text-secGray">
                 <DownloadIcon width={24} height={18} className="fill-secGray" />
-                Download Files
+                {t("download_files")}
               </button>
             </DialogTrigger>
             <DialogContent className="max-h-[320px] overflow-y-auto sm:max-h-[450px] sm:max-w-[825px] md:max-h-[500px] xl:max-h-[540px]">
@@ -302,7 +305,7 @@ export const ProductDetails = ({
 
         <div className="mt-5">
           <CustomAccordion
-            title="The Description"
+            title={t("description")}
             icon={<FaBars size={36} />}
             content={
               <>
@@ -311,7 +314,7 @@ export const ProductDetails = ({
                 </p>
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                   <div className="space-y-4">
-                    <h4 className="font-medium">Advantages:</h4>
+                    {/* <h4 className="font-medium">Advantages:</h4> */}
                     <ul className="list-disc space-y-2 pl-5">
                       {productData.description_advantages.map((item: any) => (
                         <li key={item.id}>{item.content}</li>
@@ -336,13 +339,15 @@ export const ProductDetails = ({
 
         <div className="mt-5">
           <CustomAccordion
-            title="Technical Characteristics"
+            title={t("technical_characteristics")}
             icon={<BiListUl size={36} />}
             content={
               <>
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                   <div className="space-y-4">
-                    <h4 className="font-medium">Technical Characteristics:</h4>
+                    <h4 className="font-medium">
+                      {t("technical_characteristics")}:
+                    </h4>
                     <ul className="list-disc space-y-2 pl-5">
                       {productData.technical__characteristic.map(
                         (item: any) => (
@@ -369,7 +374,7 @@ export const ProductDetails = ({
 
         <div className="mt-5">
           <CustomAccordion
-            title="Application Places"
+            title={t("application_places")}
             icon={<BiBuildings size={36} />}
             content={
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -407,7 +412,7 @@ export const ProductDetails = ({
 
         <div className="mt-5">
           <CustomAccordion
-            title="Mixing Instructions"
+            title={t("mixing_instructions")}
             icon={<BiRefresh size={36} />}
             content={
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -436,7 +441,7 @@ export const ProductDetails = ({
 
         <div className="mt-5">
           <CustomAccordion
-            title="Installation Steps"
+            title={t("installation_steps")}
             icon={<BiWrench size={36} />}
             content={
               <div className="space-y-6">
@@ -450,7 +455,7 @@ export const ProductDetails = ({
                       >
                         <div>
                           <h4 className="font-medium">
-                            Step {step.install_step}: {step.title}
+                            {t("step")} {step.install_step}: {step.title}
                           </h4>
                           <p className="mt-2 text-gray-600">
                             {step.descreption}
@@ -472,7 +477,9 @@ export const ProductDetails = ({
 
                 {productData.install_notes.length > 0 && (
                   <div className="mt-6 rounded-lg bg-gray-50 p-4">
-                    <h4 className="mb-2 font-medium">Important Notes:</h4>
+                    <h4 className="mb-2 font-medium">
+                      {t("important_notes")}:
+                    </h4>
                     <ul className="list-disc space-y-2 pl-5">
                       {productData.install_notes.map((note: any) => (
                         <li key={note.id}>{note.content}</li>
@@ -487,13 +494,11 @@ export const ProductDetails = ({
 
         <div className="mt-5">
           <CustomAccordion
-            title="Other Related Products"
+            title={t("related")}
             icon={<BiCategory size={36} />}
             content={
               <>
-                <p className="text-2xl text-[#1EBAE5]">
-                  Other Related Products
-                </p>
+                <p className="text-2xl text-[#1EBAE5]">{t("related")}</p>
                 <div className="mt-5 flex flex-wrap items-center gap-3">
                   {related?.map((item: any) => (
                     <ProductCard item={item} key={item?.id} />

@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 type Props = { data: any };
 
@@ -16,6 +17,7 @@ export const SocialMedia = ({ data }: Props) => {
   //   { id: 4, image: "/imgs/social_media/5.png" },
   //   { id: 5, image: "/imgs/social_media/6.png" },
   // ];
+  const t = useTranslations("Home");
   return (
     <div
       className="relative bg-cover bg-center bg-no-repeat py-20"
@@ -23,7 +25,9 @@ export const SocialMedia = ({ data }: Props) => {
     >
       <div className="absolute bottom-0 left-0 right-0 top-0 z-0 bg-primary/50" />
       <div className="relative">
-        <h3 className="text-center text-5xl text-white">#BuildYourDream</h3>
+        <h3 className="text-center text-5xl text-white">
+          #{t("build_your_dream")}
+        </h3>
         <div className="mx-auto max-w-7xl pt-10">
           <div className="relative grid grid-cols-1 place-content-center place-items-center gap-3 gap-y-10 lg:grid-cols-2">
             {data?.map((item: any) => (

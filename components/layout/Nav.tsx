@@ -24,6 +24,7 @@ import {
 } from "../ui/accordion";
 
 import { useLocalizedData } from "@/utils/hooks";
+import { useLocale, useTranslations } from "next-intl";
 
 function mapEntriesToNav({
   data,
@@ -70,6 +71,8 @@ function mapEntriesToNav({
   });
 }
 export const Navbar = () => {
+  const t = useTranslations("Header");
+  const locale = useLocale();
   const [activeSublink, setActiveSublink] = useState<string | null>(null);
 
   const pathname = usePathname();
@@ -79,10 +82,10 @@ export const Navbar = () => {
   const products = useLocalizedData("Products");
 
   const navItems: NavItem[] = [
-    { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
+    { label: t("home"), href: "/" },
+    { label: t("about"), href: "/about" },
     {
-      label: "Applications",
+      label: t("applications"),
       href: "/applications",
       sublinks: mapEntriesToNav({
         data: applications?.data?.sidebar,
@@ -92,7 +95,7 @@ export const Navbar = () => {
       }),
     },
     {
-      label: "Products",
+      label: t("products"),
       href: "/products",
       sublinks: mapEntriesToNav({
         data: products?.data?.sidebar,
@@ -103,7 +106,7 @@ export const Navbar = () => {
       }),
     },
     {
-      label: "Systems",
+      label: t("systems"),
       href: "/systems",
       sublinks: mapEntriesToNav({
         data: systems?.data?.sidebar,
@@ -112,13 +115,15 @@ export const Navbar = () => {
         entryKey: "system",
       }),
     },
-    { label: "Videos", href: "/videos" },
-    { label: "Downloads", href: "/downloads" },
-    { label: "Contact Us", href: "/contact" },
+    { label: t("videos"), href: "/videos" },
+    { label: t("downloads"), href: "/downloads" },
+    { label: t("contact"), href: "/contact" },
   ];
   return (
     <>
-      <div className="hidden items-center justify-center space-x-4 lg:flex">
+      <div
+        className={`hidden flex-row items-center justify-center space-x-4 lg:flex ${locale === "ar" ? "flex-row-reverse" : "flex-row"}`}
+      >
         {navItems.map((item) =>
           !item?.sublinks ? (
             <Link
@@ -179,6 +184,7 @@ export const Navbar = () => {
 };
 
 export const ResponsiveNav = () => {
+  const t = useTranslations("Header");
   const [activeSublink, setActiveSublink] = useState<string | null>(null);
 
   const pathname = usePathname();
@@ -188,10 +194,10 @@ export const ResponsiveNav = () => {
   const products = useLocalizedData("Products");
 
   const navItems: NavItem[] = [
-    { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
+    { label: t("home"), href: "/" },
+    { label: t("about"), href: "/about" },
     {
-      label: "Applications",
+      label: t("applications"),
       href: "/applications",
       sublinks: mapEntriesToNav({
         data: applications?.data?.sidebar,
@@ -201,7 +207,7 @@ export const ResponsiveNav = () => {
       }),
     },
     {
-      label: "Products",
+      label: t("products"),
       href: "/products",
       sublinks: mapEntriesToNav({
         data: products?.data?.sidebar,
@@ -212,7 +218,7 @@ export const ResponsiveNav = () => {
       }),
     },
     {
-      label: "Systems",
+      label: t("systems"),
       href: "/systems",
       sublinks: mapEntriesToNav({
         data: systems?.data?.sidebar,
@@ -221,9 +227,9 @@ export const ResponsiveNav = () => {
         entryKey: "system",
       }),
     },
-    { label: "Videos", href: "/videos" },
-    { label: "Downloads", href: "/downloads" },
-    { label: "Contact Us", href: "/contact" },
+    { label: t("videos"), href: "/videos" },
+    { label: t("downloads"), href: "/downloads" },
+    { label: t("contact"), href: "/contact" },
   ];
   return (
     <div className="flex flex-col gap-2 lg:hidden">

@@ -56,7 +56,7 @@ export const BreadcrumbComponent = ({ pageTitle, pages }: BreadcrumbProps) => {
           alt="Chema Logo"
           width={146}
           height={146}
-          className="absolute bottom-20 right-20 z-10 hidden lg:block"
+          className="absolute bottom-20 z-10 hidden lg:block ltr:right-20 rtl:left-20"
         />
       </div>
     </div>

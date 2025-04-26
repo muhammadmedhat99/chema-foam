@@ -5,8 +5,10 @@ import { Link } from "@/i18n/navigation";
 import { FaFacebookSquare, FaLinkedin, FaYoutubeSquare } from "react-icons/fa";
 import { FiPhoneCall } from "react-icons/fi";
 import { FadeIn } from "../global/FadeIn";
+import { useTranslations } from "next-intl";
 
 export const Footer = () => {
+  const t = useTranslations();
   return (
     <FadeIn>
       <div className="bg-primary px-2 py-14">
@@ -22,73 +24,75 @@ export const Footer = () => {
           <div className="grid grid-cols-1 gap-20 pt-20 md:grid-cols-2 lg:grid-cols-4">
             {/* Need Help Section */}
             <div>
-              <h3 className="mb-4 font-bold text-secondary">Need Help?</h3>
+              <h3 className="mb-4 font-bold text-secondary">
+                {t("Footer.need_help")}
+              </h3>
               <div className="flex items-center justify-between">
                 <ul className="space-y-2">
                   <li>
                     <Link
-                      href="#"
+                      href="/"
                       className="text-white duration-300 hover:text-secondary"
                     >
-                      Home
+                      {t("Header.home")}
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/about"
                       className="text-white duration-300 hover:text-secondary"
                     >
-                      About Us
+                      {t("Header.about")}
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/applications"
                       className="text-white duration-300 hover:text-secondary"
                     >
-                      Applications
+                      {t("Header.applications")}
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/products"
                       className="text-white duration-300 hover:text-secondary"
                     >
-                      Products
+                      {t("Header.products")}
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/systems"
                       className="text-white duration-300 hover:text-secondary"
                     >
-                      Systems
+                      {t("Header.systems")}
                     </Link>
                   </li>
                 </ul>
                 <ul>
                   <li className="space-y-2">
                     <Link
-                      href="#"
+                      href="/videos"
                       className="text-white duration-300 hover:text-secondary"
                     >
-                      Videos
+                      {t("Header.videos")}
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/downloads"
                       className="text-white duration-300 hover:text-secondary"
                     >
-                      Downloads
+                      {t("Header.downloads")}
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/contact"
                       className="text-white duration-300 hover:text-secondary"
                     >
-                      Contact Us
+                      {t("Header.contact")}
                     </Link>
                   </li>
                 </ul>
@@ -97,25 +101,37 @@ export const Footer = () => {
 
             {/* Map Location Section */}
             <div>
-              <h3 className="mb-4 font-bold text-secondary">Map Location</h3>
+              <h3 className="mb-4 font-bold text-secondary">
+                {t("Footer.map_location")}
+              </h3>
               <div>
-                <p className="font-bold text-white">FACTORY</p>
-                <p className="text-sm text-paragraph">
-                  10th of Ramadan - B4 Industrial Zone
-                </p>
+                <p className="font-bold text-white">{t("Footer.factory")}</p>
+                <a
+                  href="https://www.google.com/maps/place/Chema+Foam+Group+-+%D9%83%D9%8A%D9%85%D8%A7+%D9%81%D9%88%D9%85%E2%80%AD/@30.3196073,31.7795342,15z/data=!4m6!3m5!1s0x14f80796d8433167:0xb2ed4d649c3b3c9e!8m2!3d30.3196073!4d31.7795342!16s%2Fg%2F11c1rfd9c4?sa=X&ved=2ahUKEwjb24HwlZD_AhXLTaQEHXS6DfMQ_BJ6BAhMEAg&entry=tts&shorturl=1"
+                  target="_blanc"
+                  className="text-sm text-paragraph"
+                >
+                  {t("Footer.factory_location")}
+                </a>
               </div>
               <div className="mt-4">
-                <p className="font-bold text-white">OFFICE</p>
-                <p className="text-sm text-paragraph">
-                  11 Obour Buildings - Salah Salem - Nasr City - Cairo
-                </p>
+                <p className="font-bold text-white">{t("Footer.office")}</p>
+                <a
+                  href="https://www.google.com/maps/place/TAQA+Misr/@30.078028,31.3113224,21z/data=!4m7!3m6!1s0x14581872016c19c1:0x599141d37b8d1d8d!8m2!3d30.0779342!4d31.3115634!15sCj0xMSBPYm91ciBCdWlsZGluZ3MgLSBTYWxhaCBTYWxlbSAtIE5hc3IgQ2l0eSBDYWlybyAtIEVneXB04oCtkgEaaGVhdGluZ19lcXVpcG1lbnRfc3VwcGxpZXLgAQA!16s%2Fg%2F1q5bpk6s2?entry=tts&shorturl=1"
+                  target="_blanc"
+                  className="text-sm text-paragraph"
+                >
+                  {t("Footer.office_location")}
+                </a>
               </div>
             </div>
 
             {/* Follow Us Section */}
             <div>
-              <h3 className="mb-4 font-bold text-secondary">Follow Us</h3>
-              <div className="flex space-x-4">
+              <h3 className="mb-4 font-bold text-secondary">
+                {t("Footer.follow_us")}
+              </h3>
+              <div className="flex gap-4">
                 <a
                   href="#"
                   className="text-white/80 duration-300 hover:text-secondary"
@@ -136,11 +152,18 @@ export const Footer = () => {
                 </a>
               </div>
               <a
-                href="tel:+2010203040"
-                className="mt-8 flex items-center gap-2 text-4xl font-bold text-white"
+                href="tel:+01002278080"
+                className="mt-8 flex items-center gap-2 text-2xl font-bold text-white"
               >
                 <FiPhoneCall className="size-6 text-secondary" />
-                19211
+                01002278080
+              </a>
+              <a
+                href="tel:+0221276230"
+                className="mt-8 flex items-center gap-2 text-2xl font-bold text-white"
+              >
+                <FiPhoneCall className="size-6 text-secondary" />
+                0221276230
               </a>
             </div>
 
@@ -154,7 +177,7 @@ export const Footer = () => {
             />
           </div>
           <div className="text-sm text-[#1EBAE5]">
-            Copyright © 2023 Chema Foam Group
+            Copyright © {new Date().getFullYear()} Chema Foam Group
           </div>
         </div>
       </div>

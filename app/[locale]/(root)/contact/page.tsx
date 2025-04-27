@@ -16,8 +16,10 @@ import { CgArrowTopRightO } from "react-icons/cg";
 import { CiLocationOn } from "react-icons/ci";
 import { FiPhoneCall } from "react-icons/fi";
 import { SlCallOut } from "react-icons/sl";
+import { useTranslations } from "next-intl";
 
 export default function page() {
+  const t = useTranslations("Contact");
   return (
     <div>
       <BreadcrumbComponent
@@ -30,14 +32,13 @@ export default function page() {
           <AccordionItem value="item-1" className="border-b-0">
             <AccordionTrigger>
               <p className="font-bold text-primary lg:text-3xl">
-                <strong>For your Inquiries -</strong> Contact us in your
-                preferred way.?
+                <strong>{t("inq")} -</strong> {t("cont")}
               </p>
             </AccordionTrigger>
             <AccordionContent>
               <div className="my-5 grid gap-3 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-9">
                 <ContactCard
-                  title="Call US"
+                  title={t("visit")}
                   color="primary"
                   icon={<CiLocationOn size={36} />}
                 >
@@ -70,7 +71,7 @@ export default function page() {
                   </div>
                 </ContactCard>
                 <ContactCard
-                  title="Call US"
+                  title={t("call")}
                   color="primary"
                   icon={<SlCallOut size={36} />}
                 >
@@ -103,7 +104,7 @@ export default function page() {
                   </div>
                 </ContactCard>
                 <ContactCard
-                  title="Call US"
+                  title={t("follow")}
                   color="primary"
                   icon={<BiUserPin size={36} />}
                 >
@@ -144,13 +145,13 @@ export default function page() {
           <AccordionItem value="item-1" className="border-b-0">
             <AccordionTrigger>
               <p className="font-bold text-primary lg:text-3xl">
-                <strong>Distributors</strong> Contact your nearest distributor.
+                <strong>{t("people")}</strong> {t("call_place")}
               </p>
             </AccordionTrigger>
             <AccordionContent>
               <div className="my-5 grid gap-3 md:grid-cols-2 md:gap-6 lg:grid-cols-4 lg:gap-9">
                 <ContactCard
-                  title="Cairo"
+                  title={t("cairo")}
                   color="secondary"
                   icon={<SlCallOut size={32} />}
                 >
@@ -182,135 +183,7 @@ export default function page() {
                   </div>
                 </ContactCard>
                 <ContactCard
-                  title="Cairo"
-                  color="secondary"
-                  icon={<SlCallOut size={32} />}
-                >
-                  <div className="flex flex-col gap-1 px-7">
-                    <h6 className="font-bold uppercase text-secGray">
-                      Nasr City
-                    </h6>
-                    <Link
-                      href="tel:+201558890007"
-                      className="flex items-center gap-2 text-xs text-svg"
-                    >
-                      <span>
-                        <FiPhoneCall size={16} />
-                      </span>
-                      +201558890007
-                    </Link>
-                    <h6 className="mt-5 font-bold uppercase text-secGray">
-                      Maadi
-                    </h6>
-                    <Link
-                      href="tel:+201558890007"
-                      className="flex items-center gap-2 text-xs text-svg"
-                    >
-                      <span>
-                        <FiPhoneCall size={16} />
-                      </span>
-                      +201558890007
-                    </Link>
-                  </div>
-                </ContactCard>
-                <ContactCard
-                  title="Cairo"
-                  color="secondary"
-                  icon={<SlCallOut size={32} />}
-                >
-                  <div className="flex flex-col gap-1 px-7">
-                    <h6 className="font-bold uppercase text-secGray">
-                      Nasr City
-                    </h6>
-                    <Link
-                      href="tel:+201558890007"
-                      className="flex items-center gap-2 text-xs text-svg"
-                    >
-                      <span>
-                        <FiPhoneCall size={16} />
-                      </span>
-                      +201558890007
-                    </Link>
-                    <h6 className="mt-5 font-bold uppercase text-secGray">
-                      Maadi
-                    </h6>
-                    <Link
-                      href="tel:+201558890007"
-                      className="flex items-center gap-2 text-xs text-svg"
-                    >
-                      <span>
-                        <FiPhoneCall size={16} />
-                      </span>
-                      +201558890007
-                    </Link>
-                  </div>
-                </ContactCard>
-                <ContactCard
-                  title="Cairo"
-                  color="secondary"
-                  icon={<SlCallOut size={32} />}
-                >
-                  <div className="flex flex-col gap-1 px-7">
-                    <h6 className="font-bold uppercase text-secGray">
-                      Nasr City
-                    </h6>
-                    <Link
-                      href="tel:+201558890007"
-                      className="flex items-center gap-2 text-xs text-svg"
-                    >
-                      <span>
-                        <FiPhoneCall size={16} />
-                      </span>
-                      +201558890007
-                    </Link>
-                    <h6 className="mt-5 font-bold uppercase text-secGray">
-                      Maadi
-                    </h6>
-                    <Link
-                      href="tel:+201558890007"
-                      className="flex items-center gap-2 text-xs text-svg"
-                    >
-                      <span>
-                        <FiPhoneCall size={16} />
-                      </span>
-                      +201558890007
-                    </Link>
-                  </div>
-                </ContactCard>
-                <ContactCard
-                  title="Cairo"
-                  color="secondary"
-                  icon={<SlCallOut size={32} />}
-                >
-                  <div className="flex flex-col gap-1 px-7">
-                    <h6 className="font-bold uppercase text-secGray">
-                      Nasr City
-                    </h6>
-                    <Link
-                      href="tel:+201558890007"
-                      className="flex items-center gap-2 text-xs text-svg"
-                    >
-                      <span>
-                        <FiPhoneCall size={16} />
-                      </span>
-                      +201558890007
-                    </Link>
-                    <h6 className="mt-5 font-bold uppercase text-secGray">
-                      Maadi
-                    </h6>
-                    <Link
-                      href="tel:+201558890007"
-                      className="flex items-center gap-2 text-xs text-svg"
-                    >
-                      <span>
-                        <FiPhoneCall size={16} />
-                      </span>
-                      +201558890007
-                    </Link>
-                  </div>
-                </ContactCard>
-                <ContactCard
-                  title="Cairo"
+                  title={t("dac")}
                   color="secondary"
                   icon={<SlCallOut size={32} />}
                 >
@@ -347,10 +220,10 @@ export default function page() {
         </Accordion>
 
         <h6 className="my-5 text-2xl font-semibold text-primary lg:text-5xl">
-          Contact Forms
+          {t("contact_forms")}
         </h6>
         <CustomAccordion
-          title="Products and Solutions"
+          title={t("prod")}
           icon={<LucideLayoutGrid />}
           content={<ContactForm />}
         />

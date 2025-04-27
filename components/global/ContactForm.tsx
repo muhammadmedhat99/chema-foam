@@ -18,6 +18,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 interface IFormInput {
   first_name: string;
@@ -92,6 +93,7 @@ export const ContactForm = () => {
       fax: "",
     });
   };
+  const t = useTranslations("Contact");
   return (
     <Form {...form}>
       <form
@@ -104,7 +106,7 @@ export const ContactForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-xl text-primary">
-                Your Message *
+                {t("your_message")} *
               </FormLabel>
               <FormControl>
                 <Textarea
@@ -128,7 +130,7 @@ export const ContactForm = () => {
             render={({ field }) => (
               <FormItem className="lg:col-span-2">
                 <FormLabel className="text-xl text-primary">
-                  Company *
+                  {t("company")} *
                 </FormLabel>
                 <FormControl>
                   <Input
@@ -147,7 +149,7 @@ export const ContactForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-xl text-primary">
-                  First Name *
+                  {t("first_name")} *
                 </FormLabel>
                 <FormControl>
                   <Input
@@ -166,7 +168,7 @@ export const ContactForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-xl text-primary">
-                  Last Name *
+                  {t("last_name")} *
                 </FormLabel>
                 <FormControl>
                   <Input
@@ -185,7 +187,7 @@ export const ContactForm = () => {
             render={({ field }) => (
               <FormItem className="lg:col-span-2">
                 <FormLabel className="text-xl text-primary">
-                  Street Number
+                  {t("street_number")}
                 </FormLabel>
                 <FormControl>
                   <Input
@@ -203,7 +205,7 @@ export const ContactForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-xl text-primary">
-                Postal Code
+                {t("postal_code")}
               </FormLabel>
               <FormControl>
                 <Input
@@ -219,7 +221,9 @@ export const ContactForm = () => {
           name="city"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-xl text-primary">City</FormLabel>
+              <FormLabel className="text-xl text-primary">
+                {t("city")}
+              </FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -234,7 +238,9 @@ export const ContactForm = () => {
           name="country"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-xl text-primary">Country *</FormLabel>
+              <FormLabel className="text-xl text-primary">
+                {t("country")} *
+              </FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -251,7 +257,9 @@ export const ContactForm = () => {
           name="phone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-xl text-primary">Phone *</FormLabel>
+              <FormLabel className="text-xl text-primary">
+                {t("phone")} *
+              </FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -268,7 +276,7 @@ export const ContactForm = () => {
           name="fax"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-xl text-primary">Fax</FormLabel>
+              <FormLabel className="text-xl text-primary">{t("fax")}</FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -283,7 +291,9 @@ export const ContactForm = () => {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-xl text-primary">Email *</FormLabel>
+              <FormLabel className="text-xl text-primary">
+                {t("email")} *
+              </FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -301,13 +311,13 @@ export const ContactForm = () => {
             onClick={handleReset}
             className="h-12 rounded-none bg-paragraph px-6 text-lg font-bold text-svg hover:bg-paragraph/45 lg:h-[60px] lg:px-10 lg:text-2xl"
           >
-            Reset
+            {t("reset")}
           </Button>
           <Button
             type="submit"
             className="h-12 rounded-none bg-secondary px-6 text-lg font-bold text-primary hover:bg-secondary/65 lg:h-[60px] lg:px-10 lg:text-2xl"
           >
-            Submit Form
+            {t("submit_form")}
           </Button>
         </div>
       </form>

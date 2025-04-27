@@ -2,8 +2,10 @@ import { DownloadIcon } from "@/components/icons";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import React from "react";
+import { useTranslations } from "next-intl";
 
 export const DownloadCard = ({ product }: any) => {
+  const t = useTranslations();
   return (
     <div className="relative flex h-fit w-full flex-col gap-1.5 border border-secondary pb-5">
       <Image
@@ -23,7 +25,7 @@ export const DownloadCard = ({ product }: any) => {
         target="_blank"
         className="mx-auto flex w-11/12 items-center justify-center gap-2 bg-paragraph p-3 duration-300 hover:bg-slate-400 md:w-10/12 lg:w-9/12"
       >
-        <span className="text-xl text-secGray">Download</span>
+        <span className="text-xl text-secGray">{t("Home.download")}</span>
         <DownloadIcon width={24} height={24} className="fill-secGray" />
       </Link>
     </div>

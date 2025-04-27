@@ -25,7 +25,9 @@
     "chema_national":"Total Chema Foam National",
     "our_clients":"Our Clients",
     "build_your_dream":"BuildYourDream",
-    "faq":"Frequently asked questions"
+    "faq":"Frequently asked questions",
+    "download":"Download",
+    "filter":"Filter"
   },
   "Footer":{
     "need_help":"Need Help?",
@@ -67,5 +69,39 @@
     "download_files":"Download Files",
     "step":"Step",
     "important_notes":"Important Notes"
+  },
+  "Systems":{
+    "smart_systems":"Smart Solution System"
+  },
+  "Videos":{
+    "products_applications":"Products Applications",
+    "systems_videos":"Systems Videos",
+    "other_videos":"Other Videos"
+  },
+  "Contact":{
+    "inq":"For your Inquiries",
+    "cont":"Contact us in your preferred way.",
+    "visit":"Visit Us",
+    "call":"Call Us",
+    "follow":"Follow Us",
+    "people":"Distributors",
+    "call_place":"Contact your nearest distributor.",
+    "cairo":"Cairo",
+    "dac":"Ad Daqahliyah",
+    "contact_forms":"Contact Forms",
+    "prod":"Products And Solutions",
+    "company": "Company",
+    "your_message": "Your Message",
+    "last_name": "Last Name",
+    "first_name": "First Name",
+    "street_number": "Street Number",
+    "country": "Country",
+    "city": "City",
+    "postal_code": "Postal Code",
+    "email": "Email",
+    "fax": "Fax",
+    "phone": "Phone",
+    "submit_form": "Submit Form",
+    "reset": "Reset"
   }
 }

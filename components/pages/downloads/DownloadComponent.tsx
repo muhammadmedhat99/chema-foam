@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Sidebar } from "../applications/Sidebar";
 import { DownloadCard } from "./DownloadCard";
+import { useTranslations } from "next-intl";
 
 type DownloadComponentProps = { data: any };
 
@@ -10,11 +11,12 @@ export const DownloadComponent = ({ data }: DownloadComponentProps) => {
   const filteredProducts = data?.products.filter((product: any) =>
     selectedIds.includes(product.id),
   );
+  const t = useTranslations();
   return (
     <div className="mx-auto my-20 max-w-7xl px-2">
       <div className="grid gap-3 lg:grid-cols-4 lg:gap-9">
         <Sidebar
-          filterTitle="Filter"
+          filterTitle={t("Home.filter")}
           filters={data?.sidebar}
           selectedIds={selectedIds}
           setSelectedIds={setSelectedIds}

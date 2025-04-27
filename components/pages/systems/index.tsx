@@ -6,6 +6,7 @@ import Image from "next/image";
 import { CustomAccordion } from "@/components/pages/about/Accordion";
 import { BiChevronDown, BiMessageSquareDots } from "react-icons/bi";
 import { ProductCard } from "@/components/global/ProductCard";
+import { useTranslations } from "next-intl";
 
 type SystemsComponentProps = {
   data: any;
@@ -18,19 +19,20 @@ export const SystemsComponent = ({
   systemData,
 }: SystemsComponentProps) => {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const t = useTranslations();
   return (
     <div>
       <BreadcrumbComponent
-        pageTitle={data?.system?.title || "Systems"}
+        pageTitle={data?.system?.title || t("Header.systems")}
         pages={[
-          { title: "Home", href: "/" },
-          { title: data?.system?.title || "Systems" },
+          { title: t("Header.home"), href: "/" },
+          { title: data?.system?.title || t("Header.systems") },
         ]}
       />
       <div className="mx-auto my-20 max-w-7xl px-2">
         <div className="grid gap-3 lg:grid-cols-4 lg:gap-9">
           <Sidebar
-            filterTitle="Smart Systems"
+            filterTitle={t("Systems.smart_systems")}
             filters={data?.sidebar}
             defaultCat="system"
             defaultName="title"
@@ -78,7 +80,7 @@ export const SystemsComponent = ({
 
             <div className="mt-2 bg-gray-200 px-3 py-11 lg:px-24">
               <div className="mx-auto max-w-5xl text-center text-xl font-bold text-primary lg:text-2xl">
-                {systemData?.system?.title} Features
+                {systemData?.system?.title} {t("Applications.features")}
               </div>
               <div className="flex items-center justify-between gap-3">
                 <ul className="list-disc space-y-2 pl-5">
@@ -99,7 +101,7 @@ export const SystemsComponent = ({
 
             <div className="mt-2 bg-[#1EBAE51A] px-3 py-11 lg:px-24">
               <div className="mx-auto max-w-5xl text-center text-xl font-bold text-primary lg:text-2xl">
-                {systemData?.system?.title} Application Benefits
+                {systemData?.system?.title} {t("Applications.benefits")}
               </div>
               <div className="flex items-center justify-between gap-3">
                 <ul className="list-disc space-y-2 pl-5">
@@ -120,7 +122,7 @@ export const SystemsComponent = ({
 
             <div className="mt-5">
               <h2 className="mb-6 text-center text-2xl font-bold text-primary">
-                System Places
+                {t("Applications.places")}
               </h2>
 
               {systemData?.system?.system_places?.map((place: any) => (

@@ -258,6 +258,10 @@ export default function RegisterPage() {
             )}
           />
 
+          <div className="self-center text-xs font-bold text-[#5A5A5A] md:self-auto md:text-base">
+            الحقول التي بها علامة النجمة (*) هي حقول مطلوبة يجب ملؤها.
+          </div>
+
           <div className="flex items-center justify-end gap-3 lg:col-span-2">
             <Link
               href="/login"
@@ -277,6 +281,11 @@ export default function RegisterPage() {
           </div>
         </form>
       </Form>
+      <img
+        src="/imgs/ChemaGroupBlueIcon.svg"
+        alt="Chema Group"
+        className="my-[2rem] mb-[6rem] h-[3.25rem] w-[9.98625rem] self-center lg:mb-0 lg:mt-[7rem]"
+      />
     </div>
   );
 }

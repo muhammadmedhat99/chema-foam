@@ -88,8 +88,7 @@ export default function RegisterPage() {
   });
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    const { confirm_national_id, ...apiData } = data;
-    registerMutation.mutate(apiData);
+    registerMutation.mutate(data);
   };
 
   return (

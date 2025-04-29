@@ -23,8 +23,8 @@ export default function page() {
   return (
     <div>
       <BreadcrumbComponent
-        pageTitle={"Contact Us"}
-        pages={[{ title: "Home", href: "/" }, { title: "Contact Us" }]}
+        pageTitle={t("contact")}
+        pages={[{ title: t("home"), href: "/" }, { title: t("contact") }]}
       />
 
       <div className="mx-auto my-5 max-w-7xl px-2 md:my-10 lg:my-20">

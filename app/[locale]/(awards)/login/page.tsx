@@ -50,7 +50,7 @@ export default function LoginPage() {
       toast.success("تم التسجيل بنجاح", {
         description: "تم تسجيل بياناتك بنجاح في المسابقة",
       });
-      setCookie("token", data?.data?.user?.token);
+      setCookie("token", data?.user?.token);
       form.reset();
     },
     onError: (error: any) => {

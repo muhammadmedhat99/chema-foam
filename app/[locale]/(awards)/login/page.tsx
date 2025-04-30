@@ -19,6 +19,8 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { toast } from "sonner";
 
+import { setCookie } from "cookies-next";
+
 interface IFormInput {
   national_id: string;
 }
@@ -44,10 +46,11 @@ export default function LoginPage() {
       );
       return response.data;
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       toast.success("تم التسجيل بنجاح", {
         description: "تم تسجيل بياناتك بنجاح في المسابقة",
       });
+      setCookie("token", data?.data?.token);
       form.reset();
     },
     onError: (error: any) => {

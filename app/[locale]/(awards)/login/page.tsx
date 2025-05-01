@@ -20,6 +20,7 @@ import axios from "axios";
 import { toast } from "sonner";
 
 import { setCookie } from "cookies-next";
+import { redirect } from "next/navigation";
 
 interface IFormInput {
   national_id: string;
@@ -52,6 +53,7 @@ export default function LoginPage() {
       });
       setCookie("token", data?.token);
       form.reset();
+      redirect("/profile");
     },
     onError: (error: any) => {
       toast.error("خطأ في التسجيل", {

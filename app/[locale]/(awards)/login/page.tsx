@@ -53,7 +53,7 @@ export default function LoginPage() {
       });
       setCookie("token", data?.token);
       form.reset();
-      router.replace("/profile");
+      window.location.href = "/profile";
     },
     onError: (error: any) => {
       toast.error("خطأ في التسجيل", {

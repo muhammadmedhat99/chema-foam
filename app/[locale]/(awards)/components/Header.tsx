@@ -7,11 +7,22 @@ export const Header = async () => {
   const cookieStore = cookies();
   const token = cookieStore.get("token")?.value;
   const isLoggedIn = !!token;
-  const data = await fetchData("Awards/get-auth-user", "en", token);
+
+  let userData = null;
+
+  if (isLoggedIn) {
+    try {
+      const response = await fetchData("Awards/get-auth-user", "en", token);
+      userData = response?.data?.user;
+    } catch (error) {
+      console.error("Failed to fetch user data:", error);
+    }
+  }
+
   return (
     <div className="fixed top-0 z-[1] flex h-20 w-full items-center justify-between bg-[#1F3566] px-10 lg:h-28">
       <div className="flex items-center gap-2">
-        {isLoggedIn ? (
+        {isLoggedIn && userData ? (
           <Link
             href="/profile"
             className="flex items-center justify-center gap-2 text-xs text-white"
@@ -23,8 +34,7 @@ export const Header = async () => {
               alt="profile image"
               className="rounded-full"
             />
-
-            <span>{data?.data?.user?.name}</span>
+            <span>{userData.name}</span>
           </Link>
         ) : (
           <>

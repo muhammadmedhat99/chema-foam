@@ -20,7 +20,7 @@ import axios from "axios";
 import { toast } from "sonner";
 
 import { setCookie } from "cookies-next";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 interface IFormInput {
   national_id: string;
@@ -38,7 +38,7 @@ export default function LoginPage() {
       national_id: "",
     },
   });
-
+  const router = useRouter();
   const loginMutation = useMutation({
     mutationFn: async (data: IFormInput) => {
       const response = await axios.post(
@@ -53,7 +53,7 @@ export default function LoginPage() {
       });
       setCookie("token", data?.token);
       form.reset();
-      redirect("/profile");
+      router.replace("/profile");
     },
     onError: (error: any) => {
       toast.error("خطأ في التسجيل", {

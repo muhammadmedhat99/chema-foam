@@ -1,12 +1,13 @@
 import Image from "next/image";
 import { cookies } from "next/headers";
 import { Link } from "@/i18n/navigation";
+import fetchData from "@/utils/api";
 
-export const Header = () => {
+export const Header = async () => {
   const cookieStore = cookies();
   const token = cookieStore.get("token")?.value;
   const isLoggedIn = !!token;
-
+  const data = await fetchData("Awards/get-auth-user", "en", token);
   return (
     <div className="fixed top-0 z-[1] flex h-20 w-full items-center justify-between bg-[#1F3566] px-10 lg:h-28">
       <div className="flex items-center gap-2">
@@ -23,7 +24,7 @@ export const Header = () => {
               className="rounded-full"
             />
 
-            <span>الملف الشخصي</span>
+            <span>{data?.data?.user?.name}</span>
           </Link>
         ) : (
           <>

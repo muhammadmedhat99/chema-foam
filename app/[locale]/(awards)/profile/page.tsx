@@ -64,8 +64,8 @@ export default function UserProfile() {
     return response.data;
   }
 
-  const { data, isLoading } = useQuery({
-    queryKey: ["AvailablePrizes"],
+  const { data } = useQuery({
+    queryKey: ["UserInformation"],
     queryFn: () => fetchLocalizedData(),
   });
 
